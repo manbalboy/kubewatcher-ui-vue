@@ -9,7 +9,7 @@ module.exports = {
     requireConfigFile: false,
   },
   plugins: ['vue', 'prettier'],
-  extends: ['eslint:recommended', 'plugin:vue/recommended', 'plugin:prettier/recommended'],
+  extends: ['@nuxtjs', 'plugin:vue/recommended', 'plugin:prettier/recommended'],
   rules: {
     'prettier/prettier': [
       'error',
@@ -21,7 +21,7 @@ module.exports = {
         trailingComma: 'all',
         printWidth: 120,
         bracketSpacing: true,
-        arrowParens: 'avoid', //가능하면 생략 , always 항상 써야한다.
+        arrowParens: 'avoid', // 가능하면 생략 , always 항상 써야한다.
         proseWrap: 'preserve',
         jsxBracketSameLine: false,
         htmlWhitespaceSensitivity: 'strict',
