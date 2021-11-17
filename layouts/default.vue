@@ -7,44 +7,29 @@
       :short-title="$t('sidebar.shortTitle')"
       :title="$t('sidebar.title')"
     >
-      <template slot-scope="props" slot="links">
+      <template #links="slotProps">
         <sidebar-item
           :link="{
             name: $t('sidebar.dashboard'),
             icon: 'tim-icons icon-chart-pie-36',
-            path: '/'
+            path: '/',
+            test: slotProps,
           }"
         >
         </sidebar-item>
-        <sidebar-item
-          :link="{ name: $t('sidebar.pages'), icon: 'tim-icons icon-image-02' }"
-        >
-          <sidebar-item
-            :link="{ name: $t('sidebar.pricing'), path: '/pricing' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: $t('sidebar.rtl'), path: localePath('pages-rtl', 'ar') }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: $t('sidebar.timeline'), path: '/pages/timeline' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: $t('sidebar.login'), path: '/login' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: $t('sidebar.register'), path: '/register' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: $t('sidebar.lock'), path: '/lock' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: $t('sidebar.userProfile'), path: '/pages/user' }"
-          ></sidebar-item>
+        <sidebar-item :link="{ name: $t('sidebar.pages'), icon: 'tim-icons icon-image-02' }">
+          <sidebar-item :link="{ name: $t('sidebar.pricing'), path: '/pricing' }"></sidebar-item>
+          <sidebar-item :link="{ name: $t('sidebar.rtl'), path: localePath('pages-rtl', 'ar') }"></sidebar-item>
+          <sidebar-item :link="{ name: $t('sidebar.timeline'), path: '/pages/timeline' }"></sidebar-item>
+          <sidebar-item :link="{ name: $t('sidebar.login'), path: '/login' }"></sidebar-item>
+          <sidebar-item :link="{ name: $t('sidebar.register'), path: '/register' }"></sidebar-item>
+          <sidebar-item :link="{ name: $t('sidebar.lock'), path: '/lock' }"></sidebar-item>
+          <sidebar-item :link="{ name: $t('sidebar.userProfile'), path: '/pages/user' }"></sidebar-item>
         </sidebar-item>
         <sidebar-item
           :link="{
             name: $t('sidebar.components'),
-            icon: 'tim-icons icon-molecule-40'
+            icon: 'tim-icons icon-molecule-40',
           }"
         >
           <sidebar-item :link="{ name: $t('sidebar.multiLevelCollapse') }">
@@ -53,127 +38,109 @@
                 name: $t('sidebar.example'),
                 isRoute: false,
                 path: 'https://google.com',
-                target: '_blank'
+                target: '_blank',
               }"
             ></sidebar-item>
           </sidebar-item>
 
-          <sidebar-item
-            :link="{ name: $t('sidebar.buttons'), path: '/components/buttons' }"
-          ></sidebar-item>
+          <sidebar-item :link="{ name: $t('sidebar.buttons'), path: '/components/buttons' }"></sidebar-item>
           <sidebar-item
             :link="{
               name: $t('sidebar.gridSystem'),
-              path: '/components/grid-system'
+              path: '/components/grid-system',
             }"
           ></sidebar-item>
-          <sidebar-item
-            :link="{ name: $t('sidebar.panels'), path: '/components/panels' }"
-          ></sidebar-item>
+          <sidebar-item :link="{ name: $t('sidebar.panels'), path: '/components/panels' }"></sidebar-item>
           <sidebar-item
             :link="{
               name: $t('sidebar.sweetAlert'),
-              path: '/components/sweet-alert'
+              path: '/components/sweet-alert',
             }"
           ></sidebar-item>
           <sidebar-item
             :link="{
               name: $t('sidebar.notifications'),
-              path: '/components/notifications'
+              path: '/components/notifications',
             }"
           ></sidebar-item>
-          <sidebar-item
-            :link="{ name: $t('sidebar.icons'), path: '/components/icons' }"
-          ></sidebar-item>
+          <sidebar-item :link="{ name: $t('sidebar.icons'), path: '/components/icons' }"></sidebar-item>
           <sidebar-item
             :link="{
               name: $t('sidebar.typography'),
-              path: '/components/typography'
+              path: '/components/typography',
             }"
           ></sidebar-item>
         </sidebar-item>
-        <sidebar-item
-          :link="{ name: $t('sidebar.forms'), icon: 'tim-icons icon-notes' }"
-        >
-          <sidebar-item
-            :link="{ name: $t('sidebar.regularForms'), path: '/forms/regular' }"
-          ></sidebar-item>
+        <sidebar-item :link="{ name: $t('sidebar.forms'), icon: 'tim-icons icon-notes' }">
+          <sidebar-item :link="{ name: $t('sidebar.regularForms'), path: '/forms/regular' }"></sidebar-item>
           <sidebar-item
             :link="{
               name: $t('sidebar.extendedForms'),
-              path: '/forms/extended'
+              path: '/forms/extended',
             }"
           ></sidebar-item>
           <sidebar-item
             :link="{
               name: $t('sidebar.validationForms'),
-              path: '/forms/validation'
+              path: '/forms/validation',
             }"
           ></sidebar-item>
-          <sidebar-item
-            :link="{ name: $t('sidebar.wizard'), path: '/forms/wizard' }"
-          ></sidebar-item>
+          <sidebar-item :link="{ name: $t('sidebar.wizard'), path: '/forms/wizard' }"></sidebar-item>
         </sidebar-item>
         <sidebar-item
           :link="{
             name: $t('sidebar.tables'),
-            icon: 'tim-icons icon-puzzle-10'
+            icon: 'tim-icons icon-puzzle-10',
           }"
         >
           <sidebar-item
             :link="{
               name: $t('sidebar.regularTables'),
-              path: '/table-list/regular'
+              path: '/table-list/regular',
             }"
           ></sidebar-item>
           <sidebar-item
             :link="{
               name: $t('sidebar.extendedTables'),
-              path: '/table-list/extended'
+              path: '/table-list/extended',
             }"
           ></sidebar-item>
           <sidebar-item
             :link="{
               name: $t('sidebar.paginatedTables'),
-              path: '/table-list/paginated'
+              path: '/table-list/paginated',
             }"
           ></sidebar-item>
         </sidebar-item>
-        <sidebar-item
-          :link="{ name: $t('sidebar.maps'), icon: 'tim-icons icon-pin' }"
-        >
-          <sidebar-item
-            :link="{ name: $t('sidebar.googleMaps'), path: '/maps/google' }"
-          ></sidebar-item>
+        <sidebar-item :link="{ name: $t('sidebar.maps'), icon: 'tim-icons icon-pin' }">
+          <sidebar-item :link="{ name: $t('sidebar.googleMaps'), path: '/maps/google' }"></sidebar-item>
           <sidebar-item
             :link="{
               name: $t('sidebar.fullScreenMaps'),
-              path: '/maps/full-screen'
+              path: '/maps/full-screen',
             }"
           ></sidebar-item>
-          <sidebar-item
-            :link="{ name: $t('sidebar.vectorMaps'), path: '/maps/vector-map' }"
-          ></sidebar-item>
+          <sidebar-item :link="{ name: $t('sidebar.vectorMaps'), path: '/maps/vector-map' }"></sidebar-item>
         </sidebar-item>
         <sidebar-item
           :link="{
             name: $t('sidebar.widgets'),
             icon: 'tim-icons icon-settings',
-            path: '/widgets'
+            path: '/widgets',
           }"
         ></sidebar-item>
         <sidebar-item
           :link="{
             name: $t('sidebar.charts'),
             icon: 'tim-icons icon-chart-bar-32',
-            path: '/charts'
+            path: '/charts',
           }"
         ></sidebar-item>
         <sidebar-item
           :link="{
             name: $t('sidebar.calendar'),
             icon: 'tim-icons icon-time-alarm',
-            path: '/calendar'
+            path: '/calendar',
           }"
         ></sidebar-item>
       </template>
@@ -184,10 +151,7 @@
       <dashboard-navbar></dashboard-navbar>
       <router-view name="header"></router-view>
 
-      <div
-        :class="{ content: !isFullScreenRoute }"
-        @click="toggleSidebar"
-      >
+      <div :class="{ content: !isFullScreenRoute }" @click="toggleSidebar">
         <zoom-center-transition :duration="200" mode="out-in">
           <!-- your content here -->
           <nuxt></nuxt>
@@ -201,7 +165,13 @@
   /* eslint-disable no-new */
   import PerfectScrollbar from 'perfect-scrollbar';
   import 'perfect-scrollbar/css/perfect-scrollbar.css';
+  import { ZoomCenterTransition } from 'vue2-transitions';
   import SidebarShare from '@/components/Layout/SidebarSharePlugin';
+
+  import DashboardNavbar from '@/components/Layout/DashboardNavbar.vue';
+  import ContentFooter from '@/components/Layout/ContentFooter.vue';
+  // import DashboardContent from '@/components/Layout/Content.vue';
+  import SidebarFixedToggleButton from '@/components/Layout/SidebarFixedToggleButton.vue';
   function hasElement(className) {
     return document.getElementsByClassName(className).length > 0;
   }
@@ -217,31 +187,28 @@
     }
   }
 
-  import DashboardNavbar from '@/components/Layout/DashboardNavbar.vue';
-  import ContentFooter from '@/components/Layout/ContentFooter.vue';
-  import DashboardContent from '@/components/Layout/Content.vue';
-  import SidebarFixedToggleButton from '@/components/Layout/SidebarFixedToggleButton.vue';
-  import { SlideYDownTransition, ZoomCenterTransition } from 'vue2-transitions';
-
   export default {
     components: {
       DashboardNavbar,
       ContentFooter,
       SidebarFixedToggleButton,
-      DashboardContent,
-      SlideYDownTransition,
+      // DashboardContent,
+      // SlideYDownTransition,
       ZoomCenterTransition,
-      SidebarShare
+      SidebarShare,
     },
     data() {
       return {
-        sidebarBackground: 'vue' //vue|blue|orange|green|red|primary
+        sidebarBackground: 'vue', // vue|blue|orange|green|red|primary
       };
     },
     computed: {
       isFullScreenRoute() {
-        return this.$route.path === '/maps/full-screen'
-      }
+        return this.$route.path === '/maps/full-screen';
+      },
+    },
+    mounted() {
+      this.initScrollbar();
     },
     methods: {
       toggleSidebar() {
@@ -250,8 +217,8 @@
         }
       },
       initScrollbar() {
-        let docClasses = document.body.classList;
-        let isWindows = navigator.platform.startsWith('Win');
+        const docClasses = document.body.classList;
+        const isWindows = navigator.platform.startsWith('Win');
         if (isWindows) {
           // if we are on windows OS we activate the perfectScrollbar function
           initScrollbar('sidebar');
@@ -262,11 +229,8 @@
         } else {
           docClasses.add('perfect-scrollbar-off');
         }
-      }
+      },
     },
-    mounted() {
-      this.initScrollbar();
-    }
   };
 </script>
 <style lang="scss">

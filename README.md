@@ -8,6 +8,8 @@
 - ESLint
 - Babel
 - Sass
+- Storybook
+- Jest
 
 ## Release
 0.0.1 : initialize
@@ -21,4 +23,9 @@
     "generate": "nuxt generate",
     "test": "jest"
   }
+```
+
+## Storybook
+```shell
+npx -p @storybook/cli sb init
 ```
