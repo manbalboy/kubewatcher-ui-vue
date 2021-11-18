@@ -13,11 +13,11 @@
     </el-tag>
 
     <input
+      ref="saveTagInput"
+      v-model="inputValue"
       type="text"
       placeholder="Add new tag"
       class="form-control input-new-tag"
-      v-model="inputValue"
-      ref="saveTagInput"
       size="mini"
       @input="onInput"
       @keyup.enter="handleInputConfirm"
@@ -27,69 +27,69 @@
 </template>
 
 <script>
-import { Tag } from 'element-ui';
+  import { Tag } from 'element-ui';
 
-export default {
-  name: 'tags-input',
-  components: {
-    [Tag.name]: Tag
-  },
-  props: {
-    value: {
-      type: Array,
-      default: () => [],
-      description: 'List of tags'
+  export default {
+    name: 'TagsInput',
+    components: {
+      [Tag.name]: Tag,
     },
-    tagType: {
-      type: String,
-      default: 'primary',
-      description: 'Tag type (primary|danger etc)'
-    }
-  },
-  model: {
-    prop: 'value',
-    event: 'change'
-  },
-  data() {
-    return {
-      dynamicTags: [],
-      inputVisible: false,
-      inputValue: ''
-    };
-  },
-  methods: {
-    handleClose(tag) {
-      this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
-      this.$emit('change', this.dynamicTags);
+    model: {
+      prop: 'value',
+      event: 'change',
     },
-    showInput() {
-      this.inputVisible = true;
-      this.$nextTick(() => {
-        this.$refs.saveTagInput.$refs.input.focus();
-      });
-    },
-
-    handleInputConfirm() {
-      let inputValue = this.inputValue;
-      if (inputValue) {
-        this.dynamicTags.push(inputValue);
-        this.$emit('change', this.dynamicTags);
-      }
-      this.inputVisible = false;
-      this.inputValue = '';
-    },
-    onInput(evt) {
-      this.$emit('input', evt.target.value);
-    }
-  },
-  created() {
-    this.$watch(
-      'value',
-      newVal => {
-        this.dynamicTags = [...newVal];
+    props: {
+      value: {
+        type: Array,
+        default: () => [],
+        description: 'List of tags',
       },
-      { immediate: true }
-    );
-  }
-};
+      tagType: {
+        type: String,
+        default: 'primary',
+        description: 'Tag type (primary|danger etc)',
+      },
+    },
+    data() {
+      return {
+        dynamicTags: [],
+        inputVisible: false,
+        inputValue: '',
+      };
+    },
+    created() {
+      this.$watch(
+        'value',
+        newVal => {
+          this.dynamicTags = [...newVal];
+        },
+        { immediate: true },
+      );
+    },
+    methods: {
+      handleClose(tag) {
+        this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+        this.$emit('change', this.dynamicTags);
+      },
+      showInput() {
+        this.inputVisible = true;
+        this.$nextTick(() => {
+          this.$refs.saveTagInput.$refs.input.focus();
+        });
+      },
+
+      handleInputConfirm() {
+        const inputValue = this.inputValue;
+        if (inputValue) {
+          this.dynamicTags.push(inputValue);
+          this.$emit('change', this.dynamicTags);
+        }
+        this.inputVisible = false;
+        this.inputValue = '';
+      },
+      onInput(evt) {
+        this.$emit('input', evt.target.value);
+      },
+    },
+  };
 </script>

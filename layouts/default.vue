@@ -2,12 +2,10 @@
   <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
     <notifications></notifications>
     <sidebar-fixed-toggle-button />
-    <side-bar
-      :background-color="sidebarBackground"
-      :short-title="$t('sidebar.shortTitle')"
-      :title="$t('sidebar.title')"
-    >
+    <Sidebar :background-color="sidebarBackground" :short-title="$t('sidebar.shortTitle')" title="고정">
+      <!--        this.$sidebar.toggleMinimize();-->
       <template #links="slotProps">
+        <!--        <SidebarToggleButton />-->
         <sidebar-item
           :link="{
             name: $t('sidebar.dashboard'),
@@ -144,7 +142,7 @@
           }"
         ></sidebar-item>
       </template>
-    </side-bar>
+    </Sidebar>
     <!--Share plugin (for demo purposes). You can remove it if don't plan on using it-->
     <sidebar-share :background-color.sync="sidebarBackground"> </sidebar-share>
     <div class="main-panel" :data="sidebarBackground">
@@ -172,6 +170,8 @@
   import ContentFooter from '@/components/Layout/ContentFooter.vue';
   // import DashboardContent from '@/components/Layout/Content.vue';
   import SidebarFixedToggleButton from '@/components/Layout/SidebarFixedToggleButton.vue';
+  import SidebarToggleButton from '@/components/Layout/SidebarToggleButton';
+  import Sidebar from '~/components/SidebarPlugin/SideBar';
   function hasElement(className) {
     return document.getElementsByClassName(className).length > 0;
   }
@@ -189,9 +189,11 @@
 
   export default {
     components: {
+      Sidebar,
       DashboardNavbar,
       ContentFooter,
       SidebarFixedToggleButton,
+      SidebarToggleButton,
       // DashboardContent,
       // SlideYDownTransition,
       ZoomCenterTransition,
