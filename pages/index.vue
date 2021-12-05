@@ -39,7 +39,7 @@
           </div>
         </template>
         <div class="chart-area">
-          <line-chart
+          <LineChart
             ref="bigChart"
             style="height: 100%"
             :chart-data="bigLineChart.chartData"
@@ -47,15 +47,15 @@
             :gradient-stops="bigLineChart.gradientStops"
             :extra-options="bigLineChart.extraOptions"
           >
-          </line-chart>
+          </LineChart>
         </div>
       </card>
     </div>
     <!-- Stats Cards -->
     <div v-for="card in statsCards" :key="card.title" class="col-lg-3 col-md-6">
-      <stats-card :title="card.title" :sub-title="card.subTitle" :type="card.type" :icon="card.icon">
+      <StatsCard :title="card.title" :sub-title="card.subTitle" :type="card.type" :icon="card.icon">
         <div slot="footer" v-html="card.footer"></div>
-      </stats-card>
+      </StatsCard>
     </div>
 
     <!-- Small charts -->
@@ -66,14 +66,14 @@
           <h3 class="card-title"> <i class="tim-icons icon-bell-55 text-primary"></i> 763,215 </h3>
         </template>
         <div class="chart-area">
-          <line-chart
+          <LineChart
             style="height: 100%"
             :chart-data="purpleLineChart.chartData"
             :gradient-colors="purpleLineChart.gradientColors"
             :gradient-stops="purpleLineChart.gradientStops"
             :extra-options="purpleLineChart.extraOptions"
           >
-          </line-chart>
+          </LineChart>
         </div>
       </card>
     </div>
@@ -84,13 +84,13 @@
           <h3 class="card-title"> <i class="tim-icons icon-delivery-fast text-info"></i> 3,500€ </h3>
         </template>
         <div class="chart-area">
-          <bar-chart
+          <BarChart
             style="height: 100%"
             :chart-data="blueBarChart.chartData"
             :gradient-stops="blueBarChart.gradientStops"
             :extra-options="blueBarChart.extraOptions"
           >
-          </bar-chart>
+          </BarChart>
         </div>
       </card>
     </div>
@@ -101,13 +101,13 @@
           <h3 class="card-title"> <i class="tim-icons icon-send text-success"></i> 12,100K </h3>
         </template>
         <div class="chart-area">
-          <line-chart
+          <LineChart
             style="height: 100%"
             :chart-data="greenLineChart.chartData"
             :gradient-stops="greenLineChart.gradientStops"
             :extra-options="greenLineChart.extraOptions"
           >
-          </line-chart>
+          </LineChart>
         </div>
       </card>
     </div>
@@ -116,7 +116,7 @@
         <template slot="header">
           <h6 class="title d-inline">Tasks (5)</h6>
           <p class="card-category d-inline">Today</p>
-          <base-dropdown
+          <BaseDropdown
             menu-on-right=""
             tag="div"
             title-classes="btn btn-link btn-icon"
@@ -126,7 +126,7 @@
             <a class="dropdown-item" href="#pablo"> Action </a>
             <a class="dropdown-item" href="#pablo"> Another action </a>
             <a class="dropdown-item" href="#pablo"> Something else </a>
-          </base-dropdown>
+          </BaseDropdown>
         </template>
         <div class="table-full-width table-responsive">
           <task-list></task-list>
@@ -152,13 +152,13 @@
   import StatsCard from '@/components/Cards/StatsCard';
   import config from '@/config';
 
-  let bigChartData = [
+  const bigChartData = [
     [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
     [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120],
     [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130],
   ];
-  let bigChartLabels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-  let bigChartDatasetOptions = {
+  const bigChartLabels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+  const bigChartDatasetOptions = {
     fill: true,
     borderColor: config.colors.primary,
     borderWidth: 2,
@@ -327,7 +327,7 @@
     },
     methods: {
       initBigChart(index) {
-        let chartData = {
+        const chartData = {
           datasets: [
             {
               ...bigChartDatasetOptions,

@@ -21,7 +21,7 @@ const SidebarStore = {
     }, 1000);
 
     this.isMinimized = !this.isMinimized;
-  }
+  },
 };
 
 const SidebarPlugin = {
@@ -29,15 +29,15 @@ const SidebarPlugin = {
     if (options && options.sidebarLinks) {
       SidebarStore.sidebarLinks = options.sidebarLinks;
     }
-    let app = new Vue({
+    const app = new Vue({
       data: {
-        sidebarStore: SidebarStore
-      }
+        sidebarStore: SidebarStore,
+      },
     });
     Vue.prototype.$sidebar = app.sidebarStore;
-    Vue.component('side-bar', Sidebar);
-    Vue.component('sidebar-item', SidebarItem);
-  }
+    Vue.component('SideBar', Sidebar);
+    Vue.component('SidebarItem', SidebarItem);
+  },
 };
 
 export default SidebarPlugin;

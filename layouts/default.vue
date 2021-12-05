@@ -170,7 +170,7 @@
   import ContentFooter from '@/components/Layout/ContentFooter.vue';
   // import DashboardContent from '@/components/Layout/Content.vue';
   import SidebarFixedToggleButton from '@/components/Layout/SidebarFixedToggleButton.vue';
-  import SidebarToggleButton from '@/components/Layout/SidebarToggleButton';
+  // import SidebarToggleButton from '@/components/Layout/SidebarToggleButton';
   import Sidebar from '~/components/SidebarPlugin/SideBar';
   function hasElement(className) {
     return document.getElementsByClassName(className).length > 0;
@@ -193,7 +193,7 @@
       DashboardNavbar,
       ContentFooter,
       SidebarFixedToggleButton,
-      SidebarToggleButton,
+      // SidebarToggleButton,
       // DashboardContent,
       // SlideYDownTransition,
       ZoomCenterTransition,

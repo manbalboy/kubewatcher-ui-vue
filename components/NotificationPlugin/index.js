@@ -10,7 +10,7 @@ const NotificationStore = {
     timeout: 5000,
     closeOnClick: true,
     showClose: true,
-    order: 'normal' // normal | reverse (When reverse, each notification will be added on top)
+    order: 'normal', // normal | reverse (When reverse, each notification will be added on top)
   },
   setOptions(options) {
     this.settings = Object.assign(this.settings, options);
@@ -26,14 +26,12 @@ const NotificationStore = {
       notification = { message: notification };
     }
     notification.timestamp = new Date();
-    notification.timestamp.setMilliseconds(
-      notification.timestamp.getMilliseconds() + this.state.length
-    );
+    notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length);
     notification = Object.assign({}, this.settings, notification);
     if (this.settings.order === 'reverse') {
-      this.state.unshift(notification)
+      this.state.unshift(notification);
     } else {
-      this.state.push(notification)
+      this.state.push(notification);
     }
   },
   notify(notification) {
@@ -44,20 +42,20 @@ const NotificationStore = {
     } else {
       this.addNotification(notification);
     }
-  }
+  },
 };
 
 const NotificationsPlugin = {
   install(Vue, options) {
-    let app = new Vue({
+    const app = new Vue({
       data: {
-        notificationStore: NotificationStore
+        notificationStore: NotificationStore,
       },
       methods: {
         notify(notification) {
           this.notificationStore.notify(notification);
-        }
-      }
+        },
+      },
     });
     Vue.prototype.$notify = app.notify;
     Vue.prototype.$notifications = app.notificationStore;
@@ -65,7 +63,7 @@ const NotificationsPlugin = {
     if (options) {
       NotificationStore.setOptions(options);
     }
-  }
+  },
 };
 
 export default NotificationsPlugin;

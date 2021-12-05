@@ -1,7 +1,7 @@
-import '!style-loader!css-loader!sass-loader!../assets/sass/black-dashboard-pro.scss';
 import '!style-loader!css-loader!../assets/css/demo.css';
 import '!style-loader!css-loader!../assets/css/nucleo-icons.css';
 import '!style-loader!css-loader!../assets/css/font-awesome.css';
+import '!style-loader!css-loader!sass-loader!../assets/sass/black-dashboard-pro.scss';
 import { withTests } from "@storybook/addon-jest";
 
 import results from '../.jest-test-results.json';
