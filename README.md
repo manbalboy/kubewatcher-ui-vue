@@ -1,10 +1,10 @@
-# KUBEWATCHER - UI 프로젝트
+# KUBE_WATCHER - UI 프로젝트
 
 ## contributor
 @manbalboy(정훈) manbalboy@hanmail.net
 
 ## Tech Requirement (Tech Stack)
-- nuxtjs
+- nuxt.js
 - ESLint
 - Babel
 - Sass
@@ -16,16 +16,44 @@
 
 ## Script
 ```json
- "scripts": {
+{
+  "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "test": "jest"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:generate-output": "jest --json --outputFile=.jest-test-results.json"
   }
+}
 ```
 
-## Storybook
+## Install
+- git clone
+```shell
+git clone https://github.com/manbalboy/kubewatcher-ui-vue.git .
+```
+- npm install
+```shell
+# clone dir
+npm i
+```
+
+- project dev start
+```shell
+npm run dev
+```
+
+- project storybook start
+```shell
+npm run storybook
+```
+
+## Tip 
+- Storybook install 방법
 ```shell
 npx -p @storybook/cli sb init
 ```
