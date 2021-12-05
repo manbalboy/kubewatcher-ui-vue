@@ -3,14 +3,13 @@
     class="progress-container"
     :class="{
       [`progress-${type}`]: type,
-      [`progress-${size}`]: size
+      [`progress-${size}`]: size,
     }"
   >
-    <span class="progress-badge" v-if="label">{{ label }}</span>
+    <span v-if="label" class="progress-badge">{{ label }}</span>
     <div class="progress">
-      <span class="progress-value" v-if="showValue && valuePosition === 'left'"
-        >{{ value }}%</span
-      >
+      <span v-if="showValue && valuePosition === 'left'" class="progress-value">{{ value }}%</span>
+
       <div
         class="progress-bar"
         :class="computedClasses"
@@ -21,59 +20,52 @@
         :style="`width: ${value}%;`"
       >
         <slot>
-          <span
-            v-if="showValue && valuePosition === 'right'"
-            class="progress-value"
-            >{{ value }}%</span
-          >
+          <span v-if="showValue && valuePosition === 'right'" class="progress-value">{{ value }}%</span>
         </slot>
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {
-  name: 'base-progress',
-  props: {
-    striped: Boolean,
-    showValue: {
-      type: Boolean,
-      default: true
+  export default {
+    name: 'BaseProgress',
+    props: {
+      striped: Boolean,
+      showValue: {
+        type: Boolean,
+        default: true,
+      },
+      animated: Boolean,
+      label: String,
+      valuePosition: {
+        type: String,
+        default: 'left', // left | right
+      },
+      height: {
+        type: Number,
+        default: 1,
+      },
+      type: {
+        type: String,
+        default: 'default',
+      },
+      size: {
+        type: String,
+        default: 'sm',
+      },
+      value: {
+        type: Number,
+        default: 0,
+        validator: value => {
+          return value >= 0 && value <= 100;
+        },
+      },
     },
-    animated: Boolean,
-    label: String,
-    valuePosition: {
-      type: String,
-      default: 'left' // left | right
+    computed: {
+      computedClasses() {
+        return [{ 'progress-bar-striped': this.striped }, { 'progress-bar-animated': this.animated }];
+      },
     },
-    height: {
-      type: Number,
-      default: 1
-    },
-    type: {
-      type: String,
-      default: 'default'
-    },
-    size: {
-      type: String,
-      default: 'sm'
-    },
-    value: {
-      type: Number,
-      default: 0,
-      validator: value => {
-        return value >= 0 && value <= 100;
-      }
-    }
-  },
-  computed: {
-    computedClasses() {
-      return [
-        { 'progress-bar-striped': this.striped },
-        { 'progress-bar-animated': this.animated }
-      ];
-    }
-  }
-};
+  };
 </script>
 <style></style>
