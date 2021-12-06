@@ -127,7 +127,7 @@
           { 'btn-wd': this.wide },
           { 'btn-icon btn-fab': this.icon },
           { [`btn-${this.type}`]: this.type.trim() === '' ? false : this.type },
-          { [`btn-${this.size}`]: this.size },
+          { [`btn-${this.size}`]: this.size.trim() === '' ? false : this.size },
           { 'btn-simple': this.simple },
           { 'btn-link': this.link },
           { disabled: this.disabled && this.tag !== 'button' },
