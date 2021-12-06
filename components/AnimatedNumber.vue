@@ -7,9 +7,16 @@
   export default {
     name: 'AnimatedNumber',
     props: {
+      /**
+       * 도달할 값
+       */
       value: {
+        type: Number,
         default: 0,
       },
+      /**
+       * 이동 시간 ms
+       */
       duration: {
         type: Number,
         default: 500,
@@ -21,7 +28,7 @@
       };
     },
     watch: {
-      number(newValue, oldValue) {
+      value(newValue, oldValue) {
         this.initAnimation(newValue, oldValue);
       },
     },
@@ -30,6 +37,7 @@
     },
     methods: {
       initAnimation(newValue, oldValue) {
+        console.log(newValue, oldValue);
         const vm = this;
 
         function animate() {

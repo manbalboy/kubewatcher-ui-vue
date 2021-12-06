@@ -1,5 +1,5 @@
 <template>
-  <fade-transition>
+  <FadeTransition>
     <div v-if="visible" class="alert" :class="[`alert-${type}`, { 'alert-with-icon': icon }]" role="alert">
       <slot v-if="!dismissible"></slot>
       <template v-else>
@@ -18,7 +18,7 @@
         <span data-notify="message"> <slot></slot> </span>
       </template>
     </div>
-  </fade-transition>
+  </FadeTransition>
 </template>
 <script>
   import { FadeTransition } from 'vue2-transitions';
@@ -29,16 +29,30 @@
       FadeTransition,
     },
     props: {
+      /**
+       * alert type
+       */
       type: {
         type: String,
         default: 'default',
+        validator: value => {
+          const typeArr = ['default', 'primary', 'info', 'success', 'warning', 'danger'];
+          return typeArr.includes(value);
+        },
         description: 'Alert type',
       },
+
+      /**
+       * x 버튼 여부
+       */
       dismissible: {
         type: Boolean,
         default: false,
         description: 'Whether alert is dismissible (closeable)',
       },
+      /**
+       * icon class
+       */
       icon: {
         type: String,
         default: '',
