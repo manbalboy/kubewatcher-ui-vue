@@ -30,4 +30,12 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['**.spec.js'],
+      rules: {
+        'no-unused-vars': 0,
+      },
+    },
+  ],
 };
