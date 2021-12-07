@@ -12,7 +12,7 @@
     <slot name="label">
       <label v-if="label"> {{ label }} {{ required ? '*' : '' }} </label>
     </slot>
-    <div class="mb-0" :class="{'input-group': hasIcon}">
+    <div class="mb-0" :class="{ 'input-group': hasIcon }">
       <slot name="addonLeft">
         <span v-if="addonLeftIcon" class="input-group-prepend">
           <div class="input-group-text"><i :class="addonLeftIcon"></i></div>
@@ -22,9 +22,9 @@
         <input
           :value="value"
           v-bind="$attrs"
-          v-on="listeners"
           class="form-control"
           aria-describedby="addon-right addon-left"
+          v-on="listeners"
         />
       </slot>
       <slot name="addonRight">
@@ -34,93 +34,100 @@
       </slot>
     </div>
 
-    <slot name="error" v-if="error || $slots.error">
+    <slot v-if="error || $slots.error" name="error">
       <label class="error">{{ error }}</label>
     </slot>
     <slot name="helperText"></slot>
   </div>
 </template>
 <script>
-export default {
-  inheritAttrs: false,
-  name: 'base-input',
-  props: {
-    required: Boolean,
-    label: {
-      type: String,
-      description: 'Input label'
+  export default {
+    name: 'BaseInput',
+    inheritAttrs: false,
+    model: {
+      prop: 'value',
+      event: 'input',
     },
-    error: {
-      type: String,
-      description: 'Input error',
-      default: ''
+    props: {
+      /**
+       * 라벨 필수여부
+       */
+      required: { type: Boolean },
+
+      /**
+       * input label
+       */
+      label: {
+        type: String,
+        description: 'Input label',
+      },
+      error: {
+        type: String,
+        description: 'Input error',
+        default: '',
+      },
+      /**
+       * v-model value
+       */
+      value: {
+        type: [String, Number],
+        description: 'Input value',
+      },
+      addonRightIcon: {
+        type: String,
+        description: 'Input icon on the right',
+      },
+      addonLeftIcon: {
+        type: String,
+        description: 'Input icon on the left',
+      },
     },
-    value: {
-      type: [String, Number],
-      description: 'Input value'
-    },
-    addonRightIcon: {
-      type: String,
-      description: 'Input icon on the right'
-    },
-    addonLeftIcon: {
-      type: String,
-      description: 'Input icon on the left'
-    }
-  },
-  model: {
-    prop: 'value',
-    event: 'input'
-  },
-  data() {
-    return {
-      focused: false,
-      touched: false
-    };
-  },
-  computed: {
-    hasIcon() {
-      return this.hasLeftAddon || this.hasRightAddon
-    },
-    hasLeftAddon() {
-      const { addonLeft } = this.$slots;
-      return (
-        addonLeft !== undefined ||
-        this.addonLeftIcon !== undefined
-      );
-    },
-    hasRightAddon() {
-      const { addonRight } = this.$slots;
-      return (
-        addonRight !== undefined ||
-        this.addonRightIcon !== undefined
-      );
-    },
-    listeners() {
+    data() {
       return {
-        ...this.$listeners,
-        input: this.onInput,
-        blur: this.onBlur,
-        focus: this.onFocus
+        focused: false,
+        touched: false,
       };
-    }
-  },
-  methods: {
-    onInput(evt) {
-      if (!this.touched) {
-        this.touched = true;
-      }
-      this.$emit('input', evt.target.value);
     },
-    onFocus(evt) {
-      this.focused = true;
-      this.$emit('focus', evt)
+    computed: {
+      hasIcon() {
+        return this.hasLeftAddon || this.hasRightAddon;
+      },
+      hasLeftAddon() {
+        const { addonLeft } = this.$slots;
+        return addonLeft !== undefined || this.addonLeftIcon !== undefined;
+      },
+      hasRightAddon() {
+        const { addonRight } = this.$slots;
+        return addonRight !== undefined || this.addonRightIcon !== undefined;
+      },
+      listeners() {
+        return {
+          ...this.$listeners,
+          input: this.onInput,
+          blur: this.onBlur,
+          focus: this.onFocus,
+        };
+      },
     },
-    onBlur(evt) {
-      this.focused = false;
-      this.$emit('blur', evt)
-    }
-  }
-};
+    mounted() {
+      console.log(this.$listeners);
+    },
+    methods: {
+      onInput(evt) {
+        if (!this.touched) {
+          this.touched = true;
+        }
+        this.$emit('input', evt.target.value);
+      },
+      onFocus(evt) {
+        this.focused = true;
+        this.$emit('focus', evt);
+      },
+      onBlur(evt) {
+        this.focused = false;
+        this.$emit('blur', evt);
+      },
+    },
+  };
 </script>
 <style></style>

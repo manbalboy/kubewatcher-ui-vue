@@ -24,7 +24,7 @@
         </button>
         <!-- You can choose types of search input -->
       </div>
-      <modal id="searchModal" :show.sync="searchModalVisible" class="modal-search" :centered="false" :show-close="true">
+      <Modal id="searchModal" :show.sync="searchModalVisible" class="modal-search" :centered="false" :show-close="true">
         <input
           id="inlineFormInputGroup"
           slot="header"
@@ -33,7 +33,8 @@
           class="form-control"
           placeholder="SEARCH"
         />
-      </modal>
+      </Modal>
+
       <base-dropdown tag="li" :menu-on-right="!$rtl.isRTL" title-tag="a" title-classes="nav-link" class="nav-item">
         <template slot="title">
           <div class="notification d-none d-lg-block d-xl-block"></div>
@@ -85,12 +86,12 @@
 </template>
 <script>
   // import { CollapseTransition } from 'vue2-transitions';
-  import SidebarToggleButton from './SidebarToggleButton';
+  // import SidebarToggleButton from './SidebarToggleButton';
   import { BaseNav, Modal } from '@/components';
 
   export default {
     components: {
-      SidebarToggleButton,
+      // SidebarToggleButton,
       // CollapseTransition,
       BaseNav,
       Modal,

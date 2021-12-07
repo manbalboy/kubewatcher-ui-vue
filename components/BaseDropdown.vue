@@ -27,33 +27,63 @@
   export default {
     name: 'BaseDropdown',
     props: {
+      /**
+       * 최상위 html tag
+       */
       tag: {
         type: String,
         default: 'div',
         description: 'Dropdown html tag (e.g div, ul etc)',
       },
+
+      /**
+       * title html tag
+       */
       titleTag: {
         type: String,
         default: 'button',
         description: 'Dropdown title (toggle) html tag',
       },
+
+      /**
+       * dropdown title
+       */
       title: {
         type: String,
         description: 'Dropdown title',
       },
+
+      /**
+       * dropdown 방향 up|down
+       */
       direction: {
         type: String,
         default: 'down', // up | down
+        validator: value => {
+          return ['up', 'down'].includes(value);
+        },
         description: 'Dropdown menu direction (up|down)',
       },
+
+      /**
+       * dropdown icon
+       */
       icon: {
         type: String,
         description: 'Dropdown icon',
       },
+
+      /**
+       * title, class
+       */
       titleClasses: {
         type: [String, Object, Array],
         description: 'Title css classes',
       },
+
+      /**
+       * menu class
+       */
       menuClasses: {
         type: [String, Object],
         description: 'Menu css classes',
@@ -69,13 +99,13 @@
       };
     },
     methods: {
-      toggleDropDown() {
+      toggleDropDown(event) {
         this.isOpen = !this.isOpen;
-        this.$emit('change', this.isOpen);
+        this.$emit('change', this.isOpen, event);
       },
-      closeDropDown() {
+      closeDropDown(event) {
         this.isOpen = false;
-        this.$emit('change', false);
+        this.$emit('change', false, event);
       },
     },
   };
