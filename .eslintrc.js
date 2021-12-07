@@ -11,6 +11,14 @@ module.exports = {
   plugins: ['prettier'],
   extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'plugin:prettier/recommended'],
   rules: {
+    'vue/component-name-in-template-casing': [
+      'error',
+      'PascalCase',
+      {
+        registeredComponentsOnly: true,
+        ignores: [],
+      },
+    ],
     'prettier/prettier': [
       'error',
       {
