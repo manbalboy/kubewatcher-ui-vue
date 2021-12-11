@@ -1,91 +1,85 @@
 <template>
   <div class="card card-plain">
-    <div role="tab" id="headingOne" class="card-header">
+    <div id="headingOne" role="tab" class="card-header">
       <a
         data-toggle="collapse"
         data-parent="#accordion"
         :href="`#${itemId}`"
-        @click.prevent="activate"
         :aria-expanded="active"
         :aria-controls="`content-${itemId}`"
+        @click.prevent="activate"
       >
         <slot name="title"> {{ title }} </slot>
         <i class="tim-icons icon-minimal-down"></i>
       </a>
     </div>
-    <collapse-transition :duration="animationDuration">
-      <div
-        v-show="active"
-        :id="`content-${itemId}`"
-        role="tabpanel"
-        :aria-labelledby="title"
-        class="collapsed"
-      >
+    <CollapseTransition :duration="animationDuration">
+      <div v-show="active" :id="`content-${itemId}`" role="tabpanel" :aria-labelledby="title" class="collapsed">
         <div class="card-body"><slot></slot></div>
       </div>
-    </collapse-transition>
+    </CollapseTransition>
   </div>
 </template>
 <script>
-import { CollapseTransition } from 'vue2-transitions';
+  import { CollapseTransition } from 'vue2-transitions';
 
-export default {
-  name: 'collapse-item',
-  components: {
-    CollapseTransition
-  },
-  props: {
-    title: {
-      type: String,
-      default: ''
+  export default {
+    name: 'CollapseItem',
+    components: {
+      CollapseTransition,
     },
-    id: String
-  },
-  inject: {
-    animationDuration: {
-      default: 250
+    inject: {
+      animationDuration: {
+        default: 250,
+      },
+      multipleActive: {
+        default: false,
+      },
+      addItem: {
+        default: () => {},
+      },
+      removeItem: {
+        default: () => {},
+      },
+      deactivateAll: {
+        default: () => {},
+      },
     },
-    multipleActive: {
-      default: false
+    props: {
+      title: {
+        type: String,
+        default: '',
+      },
+      id: String,
     },
-    addItem: {
-      default: () => {}
+    data() {
+      return {
+        active: false,
+      };
     },
-    removeItem: {
-      default: () => {}
+    computed: {
+      itemId() {
+        return this.id || this.title;
+      },
     },
-    deactivateAll: {
-      default: () => {}
-    }
-  },
-  computed: {
-    itemId() {
-      return this.id || this.title;
-    }
-  },
-  data() {
-    return {
-      active: false
-    };
-  },
-  methods: {
-    activate() {
-      let wasActive = this.active;
-      if (!this.multipleActive) {
-        this.deactivateAll();
+    mounted() {
+      this.addItem(this);
+    },
+    destroyed() {
+      if (this.$el && this.$el.parentNode) {
+        this.$el.parentNode.removeChild(this.$el);
       }
-      this.active = !wasActive;
-    }
-  },
-  mounted() {
-    this.addItem(this);
-  },
-  destroyed() {
-    if (this.$el && this.$el.parentNode) {
-      this.$el.parentNode.removeChild(this.$el);
-    }
-    this.removeItem(this);
-  }
-};
+      this.removeItem(this);
+    },
+    methods: {
+      activate() {
+        const wasActive = this.active;
+        if (!this.multipleActive) {
+          this.deactivateAll();
+        }
+        this.active = !wasActive;
+      },
+    },
+  };
 </script>
 <style></style>

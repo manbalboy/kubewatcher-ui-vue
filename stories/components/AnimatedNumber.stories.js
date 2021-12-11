@@ -1,7 +1,7 @@
 import AnimatedNumber from '../../components/AnimatedNumber.vue';
 
 export default {
-  title: 'Component/AnimatedNumber',
+  title: 'Component/Base/AnimatedNumber',
   component: AnimatedNumber,
   argTypes: {},
 };

@@ -1,14 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
 import BaseButton from '@/components/BaseButton.vue';
+let wrapper;
 
-describe('BaseButton', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallowMount(BaseButton);
-  });
-
-  test('props tag test', async () => {
+beforeEach(() => {
+  wrapper = shallowMount(BaseButton);
+});
+describe('BaseButton props test', () => {
+  test('tag test', async () => {
     /**
      * 1. tag props 기본값은  button
      * 2. tag 를 변경하게 되면 최상위 tag가 변경됨
@@ -23,7 +21,7 @@ describe('BaseButton', () => {
     expect(wrapper.find('a').exists()).toBe(true);
   });
 
-  test('props round test', async () => {
+  test('round test', async () => {
     /**
      * 1. round 가 true 일 때 첫번째 tag에 .btn-round class 가 활성화됨
      */
@@ -33,7 +31,7 @@ describe('BaseButton', () => {
     expect(testEl.classes()).toContain('btn-round');
   });
 
-  test('props block test', async () => {
+  test('block test', async () => {
     /**
      * 1. block 가 true 일 때 첫번째 tag에 .btn-block class 가 활성화됨
      */
@@ -43,7 +41,7 @@ describe('BaseButton', () => {
     expect(testEl.classes()).toContain('btn-block');
   });
 
-  test('props wide test', async () => {
+  test('wide test', async () => {
     /**
      * 1. wide 가 true 일 때 첫번째 tag에 .btn-wd class 가 활성화됨
      */
@@ -53,7 +51,7 @@ describe('BaseButton', () => {
     expect(testEl.classes()).toContain('btn-wd');
   });
 
-  test('props icon test', async () => {
+  test('icon test', async () => {
     /**
      * 1. icon 가 true 일 때 첫번째 tag에 .btn-icon.btn-fab class 가 활성화됨
      */
@@ -69,7 +67,7 @@ describe('BaseButton', () => {
     expect(filterArrayLength(testEl.classes(), ['btn-icon', 'btn-fab']) > 0).toBe(true);
   });
 
-  test('props size test', async () => {
+  test('size test', async () => {
     /**
      * 1. validator 체크 ''|sm|lg
      * 2. sm|lg 로 셋팅될 경우 btn-sm, btn-lg class setting
@@ -95,7 +93,7 @@ describe('BaseButton', () => {
     }
   });
 
-  test('props link test', async () => {
+  test('link test', async () => {
     /**
      * 1. link 가 true 일 때 첫번째 tag에 .btn-link class 가 활성화됨
      */
@@ -105,7 +103,7 @@ describe('BaseButton', () => {
     expect(testEl.classes()).toContain('btn-link');
   });
 
-  test('props simple test', async () => {
+  test('simple test', async () => {
     /**
      * 1. simple 가 true 일 때 첫번째 tag에 .btn-simple class 가 활성화됨
      */
@@ -115,7 +113,7 @@ describe('BaseButton', () => {
     expect(testEl.classes()).toContain('btn-simple');
   });
 
-  test('props disabled test', async () => {
+  test('disabled test', async () => {
     /**
      * 1. tag props 가 button 일 때, disabled 가 true 이면 button tag disabled 속성이 활성화
      * 2. tag props 가 button 이 아닐 때, disabled 가 true 이면 disabled class 가 추가됨
@@ -137,7 +135,7 @@ describe('BaseButton', () => {
     expect(testEl.classes()).toContain('disabled');
   });
 
-  test('props loading test', async () => {
+  test('loading test', async () => {
     /**
      * 1. loading 이 true 이면 disabled 가 된다.
      * 2. i.fas.fa-spinner.fa-spin tag가 활성화 된다. (loading slot 이 없을 때)
@@ -154,7 +152,7 @@ describe('BaseButton', () => {
     expect(wrapper.find('i.fas.fa-spinner.fa-spin').exists()).toBe(true);
   });
 
-  test('props type test', async () => {
+  test('type test', async () => {
     /**
      * 1. type validator check
      * 2. type 이 셋팅되면 btn-{type} 으로  class 가 생성
@@ -175,7 +173,7 @@ describe('BaseButton', () => {
     }
   });
 
-  test('props nativeType test', async () => {
+  test('nativeType test', async () => {
     /**
      * 1. nativeType validator 체크
      * 2. tag가 button 이고 nativeType setting 이 된다면 태그 type 속성에 nativeType 설정된다.
@@ -194,7 +192,9 @@ describe('BaseButton', () => {
       expect(testEl.attributes().type).toBe(item);
     }
   });
+});
 
+describe('BaseButton event 및 메서드 테스트 ', () => {
   test('methods handleClick test', async () => {
     /**
      * 1.disabled click test
@@ -229,5 +229,22 @@ describe('BaseButton', () => {
     }
 
     expect(wrapper.emitted().click.length).toBe(clickCount);
+  });
+});
+
+describe('BaseButton computed 테스트', () => {
+  test('className Test', () => {
+    const testData = [
+      { 'btn-round': wrapper.props().round },
+      { 'btn-block': wrapper.props().block },
+      { 'btn-wd': wrapper.props().wide },
+      { 'btn-icon btn-fab': wrapper.props().icon },
+      { [`btn-${wrapper.props().type}`]: wrapper.props().type.trim() === '' ? false : wrapper.props().type },
+      { [`btn-${wrapper.props().size}`]: wrapper.props().size.trim() === '' ? false : wrapper.props().size },
+      { 'btn-simple': wrapper.props().simple },
+      { 'btn-link': wrapper.props().link },
+      { disabled: wrapper.props().disabled && wrapper.props().tag !== 'button' },
+    ];
+    expect(wrapper.vm.className).toEqual(testData);
   });
 });

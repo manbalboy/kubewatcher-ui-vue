@@ -10,10 +10,10 @@
 
           <div>
             <base-input
+              v-model="model.email"
               v-validate="'required|email'"
               name="email"
               :error="getError('email')"
-              v-model="model.email"
               placeholder="Email"
               autocomplete="username"
               addon-left-icon="tim-icons icon-email-85"
@@ -21,10 +21,10 @@
             </base-input>
 
             <base-input
+              v-model="model.password"
               v-validate="'required|min:5'"
               name="password"
               :error="getError('password')"
-              v-model="model.password"
               type="password"
               autocomplete="current-password"
               placeholder="Password"
@@ -34,14 +34,10 @@
           </div>
 
           <div slot="footer">
-            <base-button native-type="submit" type="primary" class="mb-3" size="lg" block>
-              Get Started
-            </base-button>
+            <base-button native-type="submit" type="primary" class="mb-3" size="lg" block> Get Started </base-button>
             <div class="pull-left">
               <h6>
-                <nuxt-link class="link footer-link" to="/register">
-                  Create Account
-                </nuxt-link>
+                <nuxt-link class="link footer-link" to="/register"> Create Account </nuxt-link>
               </h6>
             </div>
 
@@ -55,34 +51,35 @@
   </div>
 </template>
 <script>
-export default {
-  name: 'login-page',
-  layout: 'auth',
-  data() {
-    return {
-      model: {
-        email: '',
-        password: '',
-        subscribe: true
-      }
-    };
-  },
-  methods: {
-    getError(fieldName) {
-      return this.errors.first(fieldName);
+  export default {
+    name: 'LoginPage',
+    layout: 'auth',
+    data() {
+      return {
+        model: {
+          email: '',
+          password: '',
+          subscribe: true,
+        },
+      };
     },
-    async login() {
-      let isValidForm = await this.$validator.validateAll();
-      if (isValidForm) {
-        // TIP use this.model to send it to api and perform login call
-      }
-    }
-  }
-};
+    methods: {
+      getError(fieldName) {
+        return this.errors.first(fieldName);
+      },
+
+      async login() {
+        const isValidForm = await this.$validator.validateAll();
+        if (isValidForm) {
+          // TIP use this.model to send it to api and perform login call
+        }
+      },
+    },
+  };
 </script>
 <style>
-.navbar-nav .nav-item p {
-  line-height: inherit;
-  margin-left: 5px;
-}
+  .navbar-nav .nav-item p {
+    line-height: inherit;
+    margin-left: 5px;
+  }
 </style>

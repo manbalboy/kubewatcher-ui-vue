@@ -2,7 +2,7 @@ import Badge from '../../components/Badge.vue';
 
 const typeArray = ['primary', 'info', 'success', 'warning', 'danger', 'default'];
 export default {
-  title: 'Component/Badge',
+  title: 'Component/Base/Badge',
   component: Badge,
   argTypes: {
     type: {

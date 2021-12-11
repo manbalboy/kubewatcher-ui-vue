@@ -2,6 +2,7 @@
   <FadeTransition>
     <div v-if="visible" class="alert" :class="[`alert-${type}`, { 'alert-with-icon': icon }]" role="alert">
       <slot v-if="!dismissible"></slot>
+
       <template v-else>
         <slot name="dismiss-icon">
           <button type="button" class="close" aria-label="Close" @click="dismissAlert">
@@ -28,6 +29,7 @@
     components: {
       FadeTransition,
     },
+
     props: {
       /**
        * alert type
@@ -50,6 +52,7 @@
         default: false,
         description: 'Whether alert is dismissible (closeable)',
       },
+
       /**
        * icon class
        */
@@ -59,11 +62,13 @@
         description: 'Alert icon to display',
       },
     },
+
     data() {
       return {
         visible: true,
       };
     },
+
     methods: {
       dismissAlert() {
         this.visible = false;

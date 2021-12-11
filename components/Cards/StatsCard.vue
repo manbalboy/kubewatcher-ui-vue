@@ -1,12 +1,13 @@
 <template>
-  <card class="card-stats" :show-footer-line="true">
+  <Card class="card-stats" :show-footer-line="true">
     <div class="row">
-      <div class="col-5" v-if="$slots.icon || icon">
+      <div v-if="$slots.icon || icon" class="col-5">
         <div class="info-icon text-center" :class="`icon-${type}`">
           <slot name="icon"> <i :class="icon"></i> </slot>
         </div>
       </div>
-      <div class="col-7" v-if="$slots.content || title || subTitle">
+
+      <div v-if="$slots.content || title || subTitle" class="col-7">
         <div class="numbers">
           <slot>
             <p v-if="subTitle" class="card-category">{{ subTitle }}</p>
@@ -15,28 +16,28 @@
         </div>
       </div>
     </div>
-    <div class="stats" slot="footer" v-if="$slots.footer">
+    <div v-if="$slots.footer" slot="footer" class="stats">
       <slot name="footer"></slot>
     </div>
-  </card>
+  </Card>
 </template>
 <script>
-import Card from './Card.vue';
+  import Card from './Card.vue';
 
-export default {
-  name: 'stats-card',
-  components: {
-    Card
-  },
-  props: {
-    type: {
-      type: String,
-      default: 'primary'
+  export default {
+    name: 'StatsCard',
+    components: {
+      Card,
     },
-    icon: String,
-    title: String,
-    subTitle: String
-  }
-};
+    props: {
+      type: {
+        type: String,
+        default: 'primary',
+      },
+      icon: String,
+      title: String,
+      subTitle: String,
+    },
+  };
 </script>
 <style></style>

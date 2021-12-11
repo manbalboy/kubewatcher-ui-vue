@@ -2,7 +2,7 @@ import BaseAlert from '../../components/BaseAlert.vue';
 
 const typeArray = ['primary', 'info', 'success', 'warning', 'danger', 'default'];
 export default {
-  title: 'Component/BaseAlert',
+  title: 'Component/Base/BaseAlert',
   component: BaseAlert,
   argTypes: {
     type: {

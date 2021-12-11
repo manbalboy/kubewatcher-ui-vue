@@ -1,7 +1,7 @@
 import BaseSwitch from '../../components/BaseSwitch.vue';
 
 export default {
-  title: 'Component/BaseSwitch',
+  title: 'Component/Base/BaseSwitch',
   component: BaseSwitch,
 };
 

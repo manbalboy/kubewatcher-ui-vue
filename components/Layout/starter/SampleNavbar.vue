@@ -1,16 +1,8 @@
 <template>
-  <base-nav
-    v-model="showMenu"
-    class="navbar-absolute top-navbar"
-    type="white"
-    :transparent="true"
-  >
+  <BaseNav v-model="showMenu" class="navbar-absolute top-navbar" type="white" :transparent="true">
     <div slot="brand" class="navbar-wrapper">
-      <div class="navbar-minimize d-inline"><sidebar-toggle-button /></div>
-      <div
-        class="navbar-toggle d-inline"
-        :class="{ toggled: $sidebar.showSidebar }"
-      >
+      <div class="navbar-minimize d-inline"><SidebarToggleButton /></div>
+      <div class="navbar-toggle d-inline" :class="{ toggled: $sidebar.showSidebar }">
         <button type="button" class="navbar-toggler" @click="toggleSidebar">
           <span class="navbar-toggler-bar bar1"></span>
           <span class="navbar-toggler-bar bar2"></span>
@@ -26,32 +18,21 @@
           <input type="text" class="form-control" placeholder="Search...">
           <div class="input-group-addon"><i class="tim-icons icon-zoom-split"></i></div>
         -->
-        <button
-          class="btn btn-link"
-          id="search-button"
-          data-toggle="modal"
-          data-target="#searchModal"
-        >
+        <button id="search-button" class="btn btn-link" data-toggle="modal" data-target="#searchModal">
           <i class="tim-icons icon-zoom-split"></i>
         </button>
         <!-- You can choose types of search input -->
       </div>
-      <modal
-        :show.sync="searchModalVisible"
-        class="modal-search"
-        id="searchModal"
-        :centered="false"
-        :show-close="true"
-      >
+      <Modal id="searchModal" :show.sync="searchModalVisible" class="modal-search" :centered="false" :show-close="true">
         <input
+          id="inlineFormInputGroup"
           slot="header"
           v-model="searchQuery"
           type="text"
           class="form-control"
-          id="inlineFormInputGroup"
           placeholder="SEARCH"
         />
-      </modal>
+      </Modal>
       <base-dropdown
         tag="li"
         :menu-on-right="!$rtl.isRTL"
@@ -60,9 +41,7 @@
         title-classes="nav-link"
         menu-classes="dropdown-navbar"
       >
-        <template
-          slot="title"
-        >
+        <template slot="title">
           <div class="photo"><img src="img/mike.jpg" /></div>
           <b class="caret d-none d-lg-block d-xl-block"></b>
           <p class="d-lg-none">Log out</p>
@@ -79,62 +58,62 @@
         </li>
       </base-dropdown>
     </ul>
-  </base-nav>
+  </BaseNav>
 </template>
 <script>
-import { CollapseTransition } from 'vue2-transitions';
-import { BaseNav, Modal } from '@/components';
-import SidebarToggleButton from '../SidebarToggleButton';
+  import { CollapseTransition } from 'vue2-transitions';
+  import SidebarToggleButton from '../SidebarToggleButton';
+  import { BaseNav, Modal } from '@/components';
 
-export default {
-  components: {
-    SidebarToggleButton,
-    CollapseTransition,
-    BaseNav,
-    Modal
-  },
-  computed: {
-    routeName() {
-      const { path } = this.$route;
-      let parts = path.split('/')
-      return parts.map(p => this.capitalizeFirstLetter(p)).join(' ');
+  export default {
+    components: {
+      SidebarToggleButton,
+      CollapseTransition,
+      BaseNav,
+      Modal,
     },
-    isRTL() {
-      return this.$rtl.isRTL;
-    }
-  },
-  data() {
-    return {
-      activeNotifications: false,
-      showMenu: false,
-      searchModalVisible: false,
-      searchQuery: ''
-    };
-  },
-  methods: {
-    capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
+    data() {
+      return {
+        activeNotifications: false,
+        showMenu: false,
+        searchModalVisible: false,
+        searchQuery: '',
+      };
     },
-    toggleNotificationDropDown() {
-      this.activeNotifications = !this.activeNotifications;
+    computed: {
+      routeName() {
+        const { path } = this.$route;
+        const parts = path.split('/');
+        return parts.map(p => this.capitalizeFirstLetter(p)).join(' ');
+      },
+      isRTL() {
+        return this.$rtl.isRTL;
+      },
     },
-    closeDropDown() {
-      this.activeNotifications = false;
+    methods: {
+      capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      },
+      toggleNotificationDropDown() {
+        this.activeNotifications = !this.activeNotifications;
+      },
+      closeDropDown() {
+        this.activeNotifications = false;
+      },
+      toggleSidebar() {
+        this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
+      },
+      hideSidebar() {
+        this.$sidebar.displaySidebar(false);
+      },
+      toggleMenu() {
+        this.showMenu = !this.showMenu;
+      },
     },
-    toggleSidebar() {
-      this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
-    },
-    hideSidebar() {
-      this.$sidebar.displaySidebar(false);
-    },
-    toggleMenu() {
-      this.showMenu = !this.showMenu;
-    }
-  }
-};
+  };
 </script>
 <style scoped>
-.top-navbar {
-  top: 0px;
-}
+  .top-navbar {
+    top: 0px;
+  }
 </style>

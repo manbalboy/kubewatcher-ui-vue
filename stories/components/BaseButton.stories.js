@@ -5,7 +5,7 @@ const sizeArr = ['sm', 'lg'];
 const btnTypeArr = ['button', 'reset', 'submit'];
 
 export default {
-  title: 'Component/BaseButton',
+  title: 'Component/Base/BaseButton',
   component: BaseButton,
   argTypes: {
     tag: { control: 'text' },

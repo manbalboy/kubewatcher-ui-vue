@@ -2,11 +2,7 @@
   <div>
     <div class="row">
       <div class="col-lg-6 col-sm-6 text-center">
-        <card
-          type="tasks"
-          class="text-left"
-          :header-classes="{ 'text-right': $rtl.isRTL }"
-        >
+        <card type="tasks" class="text-left" :header-classes="{ 'text-right': $rtl.isRTL }">
           <template slot="header">
             <h6 class="title d-inline">Tasks (5)</h6>
             <p class="card-category d-inline">Today</p>
@@ -24,37 +20,27 @@
             </base-dropdown>
           </template>
           <div class="table-full-width table-responsive">
-            <task-list></task-list>
+            <TaskList></TaskList>
           </div>
         </card>
 
         <card type="contributions">
           <h1 class="card-title">6,332</h1>
           <h3 class="card-category">مجموع المساهمات العامة</h3>
-          <p class="card-description">
-            بعد نجاح ناجح لمدة عامين ، سنقوم بتغيير طريقة عمل المساهمات.
-          </p>
+          <p class="card-description"> بعد نجاح ناجح لمدة عامين ، سنقوم بتغيير طريقة عمل المساهمات. </p>
           <hr />
 
           <template slot="footer">
             <div class="row">
               <div class="col-lg-6 col-md-8 ml-auto mr-auto">
                 <div class="card-stats justify-content-center">
-                  <base-switch
-                    v-model="allContributions"
-                    on-text="ON"
-                    off-text="ON"
-                  ></base-switch>
+                  <BaseSwitch v-model="allContributions" on-text="ON" off-text="ON"></BaseSwitch>
                   <span>جميع المساهمات العامة </span>
                 </div>
               </div>
               <div class="col-lg-6 col-md-8 ml-auto mr-auto">
                 <div class="card-stats justify-content-center">
-                  <base-switch
-                    v-model="pastWeekContributions"
-                    on-text="ON"
-                    off-text="ON"
-                  ></base-switch>
+                  <BaseSwitch v-model="pastWeekContributions" on-text="ON" off-text="ON"></BaseSwitch>
                   <span>مساهمات الأسبوع الماضي </span>
                 </div>
               </div>
@@ -65,82 +51,57 @@
 
       <div class="col-lg-6 col-sm-6">
         <card type="timeline" class="card-plain">
-          <time-line type="simple">
-            <time-line-item
-              inverted
-              badge-type="danger"
-              badge-icon="tim-icons icon-bag-16"
-            >
+          <TimeLine type="simple">
+            <TimeLineItem inverted badge-type="danger" badge-icon="tim-icons icon-bag-16">
               <span slot="header" class="badge badge-danger">بعض العنوان </span>
               <p slot="content">
-                ل Wifey قدم أفضل وجبة يوم الأب على الإطلاق. ممتن جدا سعيد جدا
-                حتى المباركة. شكراً لك على صنع عائلتي لقد استمتعنا بالموضوع
-                "المستقبلي" !!! كانت ليلة ممتعة معًا ...
+                ل Wifey قدم أفضل وجبة يوم الأب على الإطلاق. ممتن جدا سعيد جدا حتى المباركة. شكراً لك على صنع عائلتي لقد
+                استمتعنا بالموضوع "المستقبلي" !!! كانت ليلة ممتعة معًا ...
               </p>
 
-              <h6 slot="footer">
-                <i class="ti-time"></i> قبل ساعتين عبر تويتر
-              </h6>
-            </time-line-item>
+              <h6 slot="footer"> <i class="ti-time"></i> قبل ساعتين عبر تويتر </h6>
+            </TimeLineItem>
 
-            <time-line-item
-              inverted
-              badge-type="success"
-              badge-icon="tim-icons icon-gift-2"
-            >
+            <TimeLineItem inverted badge-type="success" badge-icon="tim-icons icon-gift-2">
               <span slot="header" class="badge badge-success">واحدة أخرى </span>
               <p slot="content">
-                أشكر الله على دعم زوجتي وأصدقائي الحقيقيين. أود أيضًا الإشارة
-                إلى أنه أول ألبوم ينتقل إلى رقم 1 من البث المباشر !!! أنا أحبك
-                إلين وأيضا قاعدة بلدي رقم واحد تصميم أي شيء أفعله من الأحذية إلى
-                الموسيقى إلى المنازل.
+                أشكر الله على دعم زوجتي وأصدقائي الحقيقيين. أود أيضًا الإشارة إلى أنه أول ألبوم ينتقل إلى رقم 1 من البث
+                المباشر !!! أنا أحبك إلين وأيضا قاعدة بلدي رقم واحد تصميم أي شيء أفعله من الأحذية إلى الموسيقى إلى
+                المنازل.
               </p>
-            </time-line-item>
+            </TimeLineItem>
 
-            <time-line-item
-              inverted
-              badge-type="info"
-              badge-icon="tim-icons icon-planet"
-            >
+            <TimeLineItem inverted badge-type="info" badge-icon="tim-icons icon-planet">
               <span slot="header" class="badges badge-info">عنوان آخر</span>
 
               <template slot="content">
                 <p>
-                  يطلق عليه أنا أفتقد كاني القديم هذا كل ما كان كاني وأنا أحبك
-                  مثل كانيي يحب كاني الشهير مشاهدة فيجويروا والثاني عشر في وسط
-                  المدينة LA 11:10 PM
+                  يطلق عليه أنا أفتقد كاني القديم هذا كل ما كان كاني وأنا أحبك مثل كانيي يحب كاني الشهير مشاهدة فيجويروا
+                  والثاني عشر في وسط المدينة LA 11:10 PM
                 </p>
                 <p>
-                  ماذا لو قدمت كاني أغنية عن كاني رويير لا تصنع سرير الدب القطبي
-                  ولكن الأريكة الدببة القطبية هي قطعة الأثاث المفضلة لدينا التي
-                  نملكها. لم يكن أي مجموعة من على أهدافه كاني
+                  ماذا لو قدمت كاني أغنية عن كاني رويير لا تصنع سرير الدب القطبي ولكن الأريكة الدببة القطبية هي قطعة
+                  الأثاث المفضلة لدينا التي نملكها. لم يكن أي مجموعة من على أهدافه كاني
                 </p>
                 <hr />
               </template>
 
-              <base-dropdown
-                slot="footer"
-                title-classes="btn btn-round btn-info"
-              >
+              <base-dropdown slot="footer" title-classes="btn btn-round btn-info">
                 <i slot="title" class="tim-icons icon-bullet-list-67"></i>
 
                 <a class="dropdown-item" href="#">عمل</a>
                 <a class="dropdown-item" href="#">عمل آخر</a>
                 <a class="dropdown-item" href="#">شيء آخر هنا</a>
               </base-dropdown>
-            </time-line-item>
-          </time-line>
+            </TimeLineItem>
+          </TimeLine>
         </card>
       </div>
     </div>
 
     <div class="row">
       <div class="col-lg-3 col-md-6">
-        <card
-          type="pricing"
-          class="card-primary card-white"
-          footer-classes="text-center mb-3 mt-3"
-        >
+        <card type="pricing" class="card-primary card-white" footer-classes="text-center mb-3 mt-3">
           <h1 class="card-title">pro</h1>
           <img class="card-img" src="img//card-primary.png" alt="Image" />
           <ul class="list-group">
@@ -153,18 +114,12 @@
             <h5 class="text-on-back">95</h5>
             <p class="plan">خطة مهنية</p>
           </div>
-          <base-button slot="footer" round type="primary" class="btn-just-icon">
-            البدء
-          </base-button>
+          <base-button slot="footer" round type="primary" class="btn-just-icon"> البدء </base-button>
         </card>
       </div>
 
       <div class="col-lg-3 col-md-6">
-        <card
-          type="pricing"
-          class="card-primary"
-          footer-classes="text-center mb-3 mt-3"
-        >
+        <card type="pricing" class="card-primary" footer-classes="text-center mb-3 mt-3">
           <h1 class="card-title">pro</h1>
           <img class="card-img" src="img//card-primary.png" alt="Image" />
           <ul class="list-group">
@@ -177,9 +132,7 @@
             <h5 class="text-on-back">95</h5>
             <p class="plan">خطة مهنية</p>
           </div>
-          <base-button slot="footer" round type="primary" class="btn-just-icon">
-            البدء
-          </base-button>
+          <base-button slot="footer" round type="primary" class="btn-just-icon"> البدء </base-button>
         </card>
       </div>
 
@@ -189,9 +142,7 @@
             <img class="img img-raised" src="img//james.jpg" alt="Card image" />
           </a>
 
-          <p class="card-description">
-            إن التشبيك في قمة الويب لا يشبه أي مؤتمر تقني أوروبي آخر.
-          </p>
+          <p class="card-description"> إن التشبيك في قمة الويب لا يشبه أي مؤتمر تقني أوروبي آخر. </p>
           <div class="icon icon-primary">
             <i class="fas fa-quote-right"></i>
           </div>
@@ -206,36 +157,31 @@
   </div>
 </template>
 <script>
-import TaskList from '@/components/Dashboard/TaskList';
-import {
-  BaseSwitch,
-  TimeLine,
-  TimeLineItem,
-  BaseCheckbox
-} from '@/components';
+  import TaskList from '@/components/Dashboard/TaskList';
+  import { BaseSwitch, TimeLine, TimeLineItem, BaseCheckbox } from '@/components';
 
-export default {
-  name: 'rtl',
-  components: {
-    BaseSwitch,
-    TimeLine,
-    TimeLineItem,
-    TaskList,
-    BaseCheckbox
-  },
-  data() {
-    return {
-      allContributions: true,
-      pastWeekContributions: false
-    };
-  },
-  mounted() {
-    this.$rtl.enableRTL();
-  },
-  beforeDestroy() {
-    this.switchLocalePath('en')
-    this.$rtl.disableRTL();
-  }
-};
+  export default {
+    name: 'Rtl',
+    components: {
+      BaseSwitch,
+      TimeLine,
+      TimeLineItem,
+      TaskList,
+      BaseCheckbox,
+    },
+    data() {
+      return {
+        allContributions: true,
+        pastWeekContributions: false,
+      };
+    },
+    mounted() {
+      this.$rtl.enableRTL();
+    },
+    beforeDestroy() {
+      this.switchLocalePath('en');
+      this.$rtl.disableRTL();
+    },
+  };
 </script>
 <style></style>

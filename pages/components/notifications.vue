@@ -103,7 +103,7 @@
             <BaseButton @click.native="modals.mini = true"> Small alert modal </BaseButton>
 
             <!-- Classic Modal -->
-            <modal :show.sync="modals.classic" header-classes="justify-content-center">
+            <Modal :show.sync="modals.classic" header-classes="justify-content-center">
               <h4 slot="header" class="title title-up">Modal title</h4>
               <p>
                 Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
@@ -115,10 +115,10 @@
                 <BaseButton>Nice Button</BaseButton>
                 <BaseButton type="danger" @click.native="modals.classic = false">Close </BaseButton>
               </template>
-            </modal>
+            </Modal>
 
             <!-- notice modal -->
-            <modal :show.sync="modals.notice" footer-classes="justify-content-center" type="notice">
+            <Modal :show.sync="modals.notice" footer-classes="justify-content-center" type="notice">
               <h5 slot="header" class="modal-title"> How Do You Become an Affiliate? </h5>
               <div class="instruction">
                 <div class="row">
@@ -161,10 +161,10 @@
               <div slot="footer" class="justify-content-center">
                 <BaseButton type="info" round @click.native="modals.notice = false">Sounds good! </BaseButton>
               </div>
-            </modal>
+            </Modal>
 
             <!-- small modal -->
-            <modal
+            <Modal
               :show.sync="modals.mini"
               class="modal-primary"
               :show-close="false"
@@ -179,7 +179,7 @@
                 <BaseButton type="neutral" link>Back</BaseButton>
                 <BaseButton type="neutral" link @click.native="modals.mini = false">Close </BaseButton>
               </template>
-            </modal>
+            </Modal>
           </div>
         </div>
       </card>

@@ -1,17 +1,18 @@
 <template>
   <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
     <notifications></notifications>
-    <sidebar-fixed-toggle-button />
-    <Sidebar :background-color="sidebarBackground" :short-title="$t('sidebar.shortTitle')" title="고정">
-      <!--        this.$sidebar.toggleMinimize();-->
-      <template #links="slotProps">
-        <!--        <SidebarToggleButton />-->
+    <SidebarFixedToggleButton />
+    <side-bar
+      :background-color="sidebarBackground"
+      :short-title="$t('sidebar.shortTitle')"
+      :title="$t('sidebar.title')"
+    >
+      <template slot="links" slot-scope="props">
         <sidebar-item
           :link="{
             name: $t('sidebar.dashboard'),
             icon: 'tim-icons icon-chart-pie-36',
             path: '/',
-            test: slotProps,
           }"
         >
         </sidebar-item>
@@ -142,20 +143,20 @@
           }"
         ></sidebar-item>
       </template>
-    </Sidebar>
+    </side-bar>
     <!--Share plugin (for demo purposes). You can remove it if don't plan on using it-->
-    <sidebar-share :background-color.sync="sidebarBackground"> </sidebar-share>
+    <SidebarShare :background-color.sync="sidebarBackground"> </SidebarShare>
     <div class="main-panel" :data="sidebarBackground">
-      <dashboard-navbar></dashboard-navbar>
+      <DashboardNavbar></DashboardNavbar>
       <router-view name="header"></router-view>
 
       <div :class="{ content: !isFullScreenRoute }" @click="toggleSidebar">
-        <zoom-center-transition :duration="200" mode="out-in">
+        <ZoomCenterTransition :duration="200" mode="out-in">
           <!-- your content here -->
           <nuxt></nuxt>
-        </zoom-center-transition>
+        </ZoomCenterTransition>
       </div>
-      <content-footer v-if="!isFullScreenRoute"></content-footer>
+      <ContentFooter v-if="!isFullScreenRoute"></ContentFooter>
     </div>
   </div>
 </template>
@@ -163,15 +164,13 @@
   /* eslint-disable no-new */
   import PerfectScrollbar from 'perfect-scrollbar';
   import 'perfect-scrollbar/css/perfect-scrollbar.css';
-  import { ZoomCenterTransition } from 'vue2-transitions';
+  import { SlideYDownTransition, ZoomCenterTransition } from 'vue2-transitions';
   import SidebarShare from '@/components/Layout/SidebarSharePlugin';
 
   import DashboardNavbar from '@/components/Layout/DashboardNavbar.vue';
   import ContentFooter from '@/components/Layout/ContentFooter.vue';
-  // import DashboardContent from '@/components/Layout/Content.vue';
+  import DashboardContent from '@/components/Layout/Content.vue';
   import SidebarFixedToggleButton from '@/components/Layout/SidebarFixedToggleButton.vue';
-  // import SidebarToggleButton from '@/components/Layout/SidebarToggleButton';
-  import Sidebar from '~/components/SidebarPlugin/SideBar';
   function hasElement(className) {
     return document.getElementsByClassName(className).length > 0;
   }
@@ -189,13 +188,11 @@
 
   export default {
     components: {
-      Sidebar,
       DashboardNavbar,
       ContentFooter,
       SidebarFixedToggleButton,
-      // SidebarToggleButton,
-      // DashboardContent,
-      // SlideYDownTransition,
+      DashboardContent,
+      SlideYDownTransition,
       ZoomCenterTransition,
       SidebarShare,
     },

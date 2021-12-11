@@ -2,11 +2,11 @@
   <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate" :class="switchClass">
     <div class="bootstrap-switch-container" @click="triggerToggle()">
       <span class="bootstrap-switch-handle-on">
-        <slot name="on"> {{ onText }} </slot>
+        <slot v-if="onText || $slots.on" name="on"> {{ onText }} </slot>
       </span>
       <span class="bootstrap-switch-label"></span>
       <span class="bootstrap-switch-handle-off bootstrap-switch-default">
-        <slot name="off"> {{ offText }} </slot>
+        <slot v-if="offText || $slots.off" name="off"> {{ offText }} </slot>
       </span>
     </div>
   </div>
@@ -15,15 +15,24 @@
   export default {
     name: 'BaseSwitch',
     props: {
-      value: [Array, Boolean],
-      onText: String,
-      offText: String,
+      /**
+       * v-model value
+       */
+      value: { type: [Boolean, Array], default: true },
+
+      /**
+       * on 라벨
+       */
+      onText: { type: String, default: '' },
+
+      /**
+       * off 라벨
+       */
+      offText: { type: String, default: '' },
     },
     computed: {
       switchClass() {
-        const base = 'bootstrap-switch-';
-        const state = this.model ? 'on' : 'off';
-        const classes = base + state;
+        const classes = `bootstrap-switch-${this.model ? 'on' : 'off'}`;
         return classes;
       },
       model: {

@@ -9,8 +9,7 @@
           <div class="description">
             <h3 class="info-title">Marketing</h3>
             <p class="description">
-              We've created the marketing campaign of the website. It was a very
-              interesting collaboration.
+              We've created the marketing campaign of the website. It was a very interesting collaboration.
             </p>
           </div>
         </div>
@@ -21,8 +20,7 @@
           <div class="description">
             <h3 class="info-title">Fully Coded in HTML5</h3>
             <p class="description">
-              We've developed the website with HTML5 and CSS3. The client has
-              access to the code using GitHub.
+              We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub.
             </p>
           </div>
         </div>
@@ -32,10 +30,7 @@
           </div>
           <div class="description">
             <h3 class="info-title">Built Audience</h3>
-            <p class="description">
-              There is also a Fully Customizable CMS Admin Dashboard for this
-              product.
-            </p>
+            <p class="description"> There is also a Fully Customizable CMS Admin Dashboard for this product. </p>
           </div>
         </div>
       </div>
@@ -44,48 +39,48 @@
         <form @submit.prevent="register">
           <card class="card-register card-white">
             <template slot="header">
-              <img class="card-img" src="img/card-primary.png" alt="Card image"/>
+              <img class="card-img" src="img/card-primary.png" alt="Card image" />
               <h4 class="card-title">Register</h4>
             </template>
 
-            <base-input
+            <BaseInput
+              v-model="model.fullName"
               v-validate="'required'"
               :error="getError('Full Name')"
-              v-model="model.fullName"
               name="Full Name"
               placeholder="Full Name"
               addon-left-icon="tim-icons icon-single-02"
             >
-            </base-input>
+            </BaseInput>
 
-            <base-input
+            <BaseInput
+              v-model="model.email"
               v-validate="'required|email'"
               :error="getError('email')"
-              v-model="model.email"
               name="email"
               placeholder="Email"
               autocomplete="username"
               addon-left-icon="tim-icons icon-email-85"
             >
-            </base-input>
+            </BaseInput>
 
-            <base-input
+            <BaseInput
+              v-model="model.password"
               v-validate="'required|min:5'"
               :error="getError('password')"
-              v-model="model.password"
               name="password"
               type="password"
               placeholder="Password"
               autocomplete="current-password"
               addon-left-icon="tim-icons icon-lock-circle"
             >
-            </base-input>
+            </BaseInput>
 
-            <base-checkbox class="text-left">
+            <BaseCheckbox class="text-left">
               I agree to the <a href="#something">terms and conditions</a>.
-            </base-checkbox>
+            </BaseCheckbox>
 
-            <base-button native-type="submit" slot="footer" type="primary" round block size="lg">
+            <base-button slot="footer" native-type="submit" type="primary" round block size="lg">
               Get Started
             </base-button>
           </card>
@@ -95,34 +90,35 @@
   </div>
 </template>
 <script>
-import { BaseCheckbox } from '@/components';
+  import { BaseCheckbox, BaseInput } from '@/components';
 
-export default {
-  name: 'register-page',
-  layout: 'auth',
-  components: {
-    BaseCheckbox
-  },
-  data() {
-    return {
-      model: {
-        email: '',
-        fullName: '',
-        password: ''
-      }
-    };
-  },
-  methods: {
-    getError(fieldName) {
-      return this.errors.first(fieldName);
+  export default {
+    name: 'RegisterPage',
+    components: {
+      BaseCheckbox,
+      BaseInput,
     },
-    async register() {
-      let isValidForm = await this.$validator.validateAll();
-      if (isValidForm) {
-        // TIP use this.model to send it to api and perform register call
-      }
-    }
-  }
-};
+    layout: 'auth',
+    data() {
+      return {
+        model: {
+          email: '',
+          fullName: '',
+          password: '',
+        },
+      };
+    },
+    methods: {
+      getError(fieldName) {
+        return this.errors.first(fieldName);
+      },
+      async register() {
+        const isValidForm = await this.$validator.validateAll();
+        if (isValidForm) {
+          // TIP use this.model to send it to api and perform register call
+        }
+      },
+    },
+  };
 </script>
 <style></style>

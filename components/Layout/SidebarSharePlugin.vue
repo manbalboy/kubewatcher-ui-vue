@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-plugin" v-click-outside="closeDropDown">
+  <div v-click-outside="closeDropDown" class="fixed-plugin">
     <div class="dropdown show-dropdown" :class="{ show: isOpen }">
       <a data-toggle="dropdown" class="settings-icon">
         <i class="fa fa-cog fa-2x" @click="toggleDropDown"> </i>
@@ -15,7 +15,7 @@
                 class="badge filter"
                 :class="[`badge-${item.color}`, { active: item.active }]"
                 :data-color="item.color"
-                @click="changeSidebarBackground(item);"
+                @click="changeSidebarBackground(item)"
               ></span>
             </div>
             <div class="clearfix"></div>
@@ -26,16 +26,13 @@
         <li class="adjustments-line">
           <div class="togglebutton switch-sidebar-mini">
             <span class="label-switch">OFF</span>
-            <base-switch
-              v-model="sidebarMini"
-              @input="minimizeSidebar"
-            ></base-switch>
+            <BaseSwitch v-model="sidebarMini" @input="minimizeSidebar"></BaseSwitch>
             <span class="label-switch label-right">ON</span>
           </div>
 
           <div class="togglebutton switch-change-color mt-3">
             <span class="label-switch">LIGHT MODE</span>
-            <base-switch v-model="darkMode" @input="toggleMode"></base-switch>
+            <BaseSwitch v-model="darkMode" @input="toggleMode"></BaseSwitch>
             <span class="label-switch label-right">DARK MODE</span>
           </div>
         </li>
@@ -74,12 +71,13 @@
   import { BaseSwitch } from '@/components';
 
   export default {
-    name: 'sidebar-share',
+    name: 'SidebarShare',
     components: {
-      BaseSwitch
+      BaseSwitch,
     },
+
     props: {
-      backgroundColor: String
+      backgroundColor: String,
     },
     data() {
       return {
@@ -92,8 +90,8 @@
           { color: 'info', active: false, value: 'blue' },
           { color: 'success', active: false, value: 'green' },
           { color: 'warning', active: false, value: 'orange' },
-          { color: 'danger', active: false, value: 'red' }
-        ]
+          { color: 'danger', active: false, value: 'red' },
+        ],
       };
     },
     methods: {
@@ -114,7 +112,7 @@
         this.toggleList(this.sidebarColors, item);
       },
       toggleMode(type) {
-        let docClasses = document.body.classList;
+        const docClasses = document.body.classList;
         if (type) {
           docClasses.remove('white-content');
         } else {
@@ -123,8 +121,8 @@
       },
       minimizeSidebar() {
         this.$sidebar.toggleMinimize();
-      }
-    }
+      },
+    },
   };
 </script>
 <style scoped lang="scss">

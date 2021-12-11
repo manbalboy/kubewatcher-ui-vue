@@ -1,7 +1,7 @@
 import BaseDropdown from '../../components/BaseDropdown.vue';
 
 export default {
-  title: 'Component/BaseDropdown',
+  title: 'Component/Base/BaseDropdown',
   component: BaseDropdown,
   argTypes: {
     tag: { control: 'text' },

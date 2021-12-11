@@ -5,9 +5,10 @@
         <i :class="badgeIcon"></i>
       </div>
     </slot>
+
     <div class="timeline-panel">
       <div class="timeline-heading"><slot name="header"></slot></div>
-      <div class="timeline-body" v-if="$slots.content">
+      <div v-if="$slots.content" class="timeline-body">
         <slot name="content"></slot>
       </div>
       <div v-if="$slots.footer" class="timeline-footer">
@@ -17,19 +18,19 @@
   </li>
 </template>
 <script>
-export default {
-  name: 'time-line-item',
-  props: {
-    inverted: Boolean,
-    badgeType: {
-      type: String,
-      default: 'success'
+  export default {
+    name: 'TimeLineItem',
+    props: {
+      inverted: Boolean,
+      badgeType: {
+        type: String,
+        default: 'success',
+      },
+      badgeIcon: {
+        type: String,
+        default: '',
+      },
     },
-    badgeIcon: {
-      type: String,
-      default: ''
-    }
-  }
-};
+  };
 </script>
 <style></style>
