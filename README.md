@@ -57,3 +57,9 @@ npm run storybook
 ```shell
 npx -p @storybook/cli sb init
 ```
+
+## 사용 모듈 공식사이트
+- [Nuxtjs](https://nuxtjs.org)
+- [Jest](https://jestjs.io/)
+- [Storybook](https://storybook.js.org/)
+- [vue2-transitions](https://github.com/BinarCode/vue2-transitions)
