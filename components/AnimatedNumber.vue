@@ -2,6 +2,7 @@
   <span>{{ animatedNumber }}</span>
 </template>
 <script>
+  // - [tween.js](https://github.com/tweenjs/tween.js/)
   import TWEEN from 'tween.js';
 
   export default {
@@ -37,7 +38,6 @@
     },
     methods: {
       initAnimation(newValue, oldValue) {
-        console.log(newValue, oldValue);
         const vm = this;
 
         function animate() {

@@ -23,11 +23,11 @@ describe('BaseSwitch props test', () => {
 
   test('onText 확인', async () => {
     /**
-     * 1. slot이 없을경우 span.bootstrap-switch-handle-on tag text 에 셋팅
+     * 1. slot 이 없을경우 span.bootstrap-switch-handle-on tag text 에 셋팅
      */
     const testEl = wrapper.find('span.bootstrap-switch-handle-on');
     const onText = '테스트 텍스트';
-    // 1. slot이 없을경우 span.bootstrap-switch-handle-on tag text 에 셋팅
+    // 1. slot 이 없을경우 span.bootstrap-switch-handle-on tag text 에 셋팅
     expect(testEl.text()).toBe('');
     await wrapper.setProps({ onText });
     expect(testEl.text()).toBe(onText);
@@ -35,12 +35,12 @@ describe('BaseSwitch props test', () => {
 
   test('offText 확인', async () => {
     /**
-     * 1. slot이 없을경우 span.bootstrap-switch-handle-off.bootstrap-switch-default tag text 에 셋팅
+     * 1. slot 이 없을경우 span.bootstrap-switch-handle-off.bootstrap-switch-default tag text 에 셋팅
      */
     const testEl = wrapper.find('span.bootstrap-switch-handle-off.bootstrap-switch-default');
     const offText = '테스트 텍스트';
 
-    // 1. slot이 없을경우 span.bootstrap-switch-handle-on tag text 에 셋팅
+    // 1. slot 이 없을경우 span.bootstrap-switch-handle-on tag text 에 셋팅
     expect(testEl.text()).toBe('');
     await wrapper.setProps({ offText });
     expect(testEl.text()).toBe(offText);

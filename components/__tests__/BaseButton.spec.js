@@ -9,13 +9,13 @@ describe('BaseButton props test', () => {
   test('tag test', async () => {
     /**
      * 1. tag props 기본값은  button
-     * 2. tag 를 변경하게 되면 최상위 tag가 변경됨
+     * 2. tag 를 변경하게 되면 최상위 tag 가 변경됨
      */
 
     // 1. tag props 기본값은  button
     expect(wrapper.props().tag).toBe('button');
 
-    // 2. tag 를 변경하게 되면 최상위 tag가 변경됨 (a 태그로 변경)
+    // 2. tag 를 변경하게 되면 최상위 tag 가 변경됨 (a 태그로 변경)
     expect(wrapper.find('a').exists()).toBe(false);
     await wrapper.setProps({ tag: 'a' });
     expect(wrapper.find('a').exists()).toBe(true);
@@ -23,7 +23,7 @@ describe('BaseButton props test', () => {
 
   test('round test', async () => {
     /**
-     * 1. round 가 true 일 때 첫번째 tag에 .btn-round class 가 활성화됨
+     * 1. round 가 true 일 때 첫번째 tag 에 .btn-round class 가 활성화됨
      */
     const testEl = wrapper.findAll('*').at(0);
     expect(testEl.classes()).not.toContain('btn-round');
@@ -33,7 +33,7 @@ describe('BaseButton props test', () => {
 
   test('block test', async () => {
     /**
-     * 1. block 가 true 일 때 첫번째 tag에 .btn-block class 가 활성화됨
+     * 1. block 가 true 일 때 첫번째 tag 에 .btn-block class 가 활성화됨
      */
     const testEl = wrapper.findAll('*').at(0);
     expect(testEl.classes()).not.toContain('btn-block');
@@ -43,7 +43,7 @@ describe('BaseButton props test', () => {
 
   test('wide test', async () => {
     /**
-     * 1. wide 가 true 일 때 첫번째 tag에 .btn-wd class 가 활성화됨
+     * 1. wide 가 true 일 때 첫번째 tag 에 .btn-wd class 가 활성화됨
      */
     const testEl = wrapper.findAll('*').at(0);
     expect(testEl.classes()).not.toContain('btn-wd');
@@ -53,7 +53,7 @@ describe('BaseButton props test', () => {
 
   test('icon test', async () => {
     /**
-     * 1. icon 가 true 일 때 첫번째 tag에 .btn-icon.btn-fab class 가 활성화됨
+     * 1. icon 가 true 일 때 첫번째 tag 에 .btn-icon.btn-fab class 가 활성화됨
      */
     const testEl = wrapper.findAll('*').at(0);
 
@@ -95,7 +95,7 @@ describe('BaseButton props test', () => {
 
   test('link test', async () => {
     /**
-     * 1. link 가 true 일 때 첫번째 tag에 .btn-link class 가 활성화됨
+     * 1. link 가 true 일 때 첫번째 tag 에 .btn-link class 가 활성화됨
      */
     const testEl = wrapper.findAll('*').at(0);
     expect(testEl.classes()).not.toContain('btn-link');
@@ -105,7 +105,7 @@ describe('BaseButton props test', () => {
 
   test('simple test', async () => {
     /**
-     * 1. simple 가 true 일 때 첫번째 tag에 .btn-simple class 가 활성화됨
+     * 1. simple 가 true 일 때 첫번째 tag 에 .btn-simple class 가 활성화됨
      */
     const testEl = wrapper.findAll('*').at(0);
     expect(testEl.classes()).not.toContain('btn-simple');
@@ -138,7 +138,7 @@ describe('BaseButton props test', () => {
   test('loading test', async () => {
     /**
      * 1. loading 이 true 이면 disabled 가 된다.
-     * 2. i.fas.fa-spinner.fa-spin tag가 활성화 된다. (loading slot 이 없을 때)
+     * 2. i.fas.fa-spinner.fa-spin tag 가 활성화 된다. (loading slot 이 없을 때)
      */
 
     // 1. loading 이 true 이면 disabled 가 된다.
@@ -176,7 +176,7 @@ describe('BaseButton props test', () => {
   test('nativeType test', async () => {
     /**
      * 1. nativeType validator 체크
-     * 2. tag가 button 이고 nativeType setting 이 된다면 태그 type 속성에 nativeType 설정된다.
+     * 2. tag 가 button 이고 nativeType setting 이 된다면 태그 type 속성에 nativeType 설정된다.
      */
     // 1. nativeType validator 체크
     const passArray = ['button', 'reset', 'submit'];

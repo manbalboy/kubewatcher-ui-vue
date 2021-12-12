@@ -50,6 +50,7 @@
        */
       title: {
         type: String,
+        default: null,
         description: 'Dropdown title',
       },
 
@@ -69,7 +70,8 @@
        * dropdown icon
        */
       icon: {
-        type: String,
+        type: [String, Object, Array],
+        default: null,
         description: 'Dropdown icon',
       },
 
@@ -78,6 +80,7 @@
        */
       titleClasses: {
         type: [String, Object, Array],
+        default: null,
         description: 'Title css classes',
       },
 
@@ -85,9 +88,15 @@
        * menu class
        */
       menuClasses: {
-        type: [String, Object],
+        type: [String, Object, Array],
+        default: null,
         description: 'Menu css classes',
       },
+
+      /**
+       * 메뉴가 오른쪽에 표시되어야 하는지 여부
+       * dropdown-menu-right class 추가 여부
+       */
       menuOnRight: {
         type: Boolean,
         description: 'Whether menu should appear on the right',
@@ -103,6 +112,7 @@
         this.isOpen = !this.isOpen;
         this.$emit('change', this.isOpen, event);
       },
+
       closeDropDown(event) {
         this.isOpen = false;
         this.$emit('change', false, event);

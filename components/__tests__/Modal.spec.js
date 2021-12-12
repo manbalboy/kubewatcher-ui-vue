@@ -75,7 +75,7 @@ describe('Modal props test', () => {
   test('centered 확인', async () => {
     /**
      * 1. default 값 확인 false
-     * 2. 값이 true 일 때 div.modal-dialog tag에 .modal-dialog-centered class 추가
+     * 2. 값이 true 일 때 div.modal-dialog tag 에 .modal-dialog-centered class 추가
      */
     const testElement = wrapper.find('div.modal-dialog');
     const passClassName = 'modal-dialog-centered';
@@ -83,7 +83,7 @@ describe('Modal props test', () => {
     // 1. default 값 확인 false
     expect(wrapper.props().centered).toBe(false);
 
-    // 2. 값이 true 일 때 div.modal-dialog tag에 .modal-dialog-centered class 추가
+    // 2. 값이 true 일 때 div.modal-dialog tag 에 .modal-dialog-centered class 추가
     expect(testElement.exists()).toBe(true);
     expect(testElement.classes()).not.toContain(passClassName);
 
@@ -137,7 +137,7 @@ describe('Modal props test', () => {
     /**
      * 1. default 확인
      * 2. validator 확인
-     * 3. type mini 일 때  div.modal.fade tag에 modal-mini class 추가
+     * 3. type mini 일 때  div.modal.fade tag 에 modal-mini class 추가
      * 4. type notice 일 때 div.modal-dialog tag 에 modal-notice class 추가
      */
     const passAcceptedValues = ['', 'notice', 'mini'];
@@ -157,7 +157,7 @@ describe('Modal props test', () => {
       expect(wrapper.vm.$options.props.type.validator(item)).toBe(false);
     });
 
-    // 3. type mini 일 때  div.modal.fade tag에 modal-mini class 추가
+    // 3. type mini 일 때  div.modal.fade tag 에 modal-mini class 추가
     expect(typeMiniTestElement.classes()).not.toContain('modal-mini');
     await wrapper.setProps({ type: 'mini' });
     expect(typeMiniTestElement.classes()).toContain('modal-mini');
@@ -279,7 +279,7 @@ describe('Modal props test', () => {
     /**
      * ## slot header 가 있을경우에만 동작가능
      * 1. headerClasses default 값 확인 ''
-     * 2. headerClasses 값이 셋팅되면 div.modal-header tag에 class 로 셋팅
+     * 2. headerClasses 값이 셋팅되면 div.modal-header tag 에 class 로 셋팅
      */
 
     const testElement = wrapper.find('div.modal-header');
@@ -287,7 +287,7 @@ describe('Modal props test', () => {
     // 1. default 값 확인
     expect(wrapper.vm.$options.props.headerClasses.default).toBe('');
 
-    // 2. headerClasses 값이 셋팅되면 div.modal-header tag에 class 로 셋팅
+    // 2. headerClasses 값이 셋팅되면 div.modal-header tag 에 class 로 셋팅
     for (const item of modalClasses) {
       let testObj;
 
@@ -324,7 +324,7 @@ describe('Modal props test', () => {
     /**
      * ## default slot 이 있어야만 보여짐
      * 1. bodyClasses default 값 확인 ''
-     * 2. bodyClasses 값이 셋팅되면 div.modal-body tag에 class 로 셋팅
+     * 2. bodyClasses 값이 셋팅되면 div.modal-body tag 에 class 로 셋팅
      */
 
     const testElement = wrapper.find('div.modal-body');
@@ -332,7 +332,7 @@ describe('Modal props test', () => {
     // 1. default 값 확인
     expect(wrapper.vm.$options.props.bodyClasses.default).toBe('');
 
-    // 2. headerClasses 값이 셋팅되면 div.modal-header tag에 class 로 셋팅
+    // 2. headerClasses 값이 셋팅되면 div.modal-header tag 에 class 로 셋팅
     for (const item of modalClasses) {
       let testObj;
 
@@ -369,7 +369,7 @@ describe('Modal props test', () => {
     /**
      * ## footer slot 이 있어야만 보여짐
      * 1. footerClasses default 값 확인 ''
-     * 2. footerClasses 값이 셋팅되면 div.modal-footer tag에 class 로 셋팅
+     * 2. footerClasses 값이 셋팅되면 div.modal-footer tag 에 class 로 셋팅
      */
 
     const testElement = wrapper.find('div.modal-footer');
@@ -377,7 +377,7 @@ describe('Modal props test', () => {
     // 1. default 값 확인
     expect(wrapper.vm.$options.props.footerClasses.default).toBe('');
 
-    // 2. headerClasses 값이 셋팅되면 div.modal-header tag에 class 로 셋팅
+    // 2. headerClasses 값이 셋팅되면 div.modal-header tag 에 class 로 셋팅
     for (const item of modalClasses) {
       let testObj;
 
@@ -453,14 +453,14 @@ describe('Modal watch test', () => {
 describe('Modal methods 및 이벤트 test', () => {
   test('closeModal() 확인', async () => {
     /**
-     * 1. div.modal을 click 하면 closeModal() 호출 된다.
+     * 1. div.modal 을 click 하면 closeModal() 호출 된다.
      * 2. closeModal() 호출되면 'update:show' 와 'close' emit 이 발생된다.
      */
 
     const closeModalSpy = jest.spyOn(wrapper.vm, 'closeModal');
     const testElement = wrapper.find('div.modal');
 
-    // 1. div.modal을 click 하면 closeModal() 호출 된다.
+    // 1. div.modal 을 click 하면 closeModal() 호출 된다.
     expect(closeModalSpy).not.toHaveBeenCalled();
     expect(wrapper.emitted().close).toBeUndefined();
     expect(wrapper.emitted()['update:show']).toBeUndefined();

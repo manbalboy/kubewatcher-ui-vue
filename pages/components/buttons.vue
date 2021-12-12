@@ -76,9 +76,9 @@
             </div>
 
             <div class="card-body">
-              <base-pagination v-model="defaultPagination" type="warning" :page-count="10" :show-arrows="false" />
+              <BasePagination v-model="defaultPagination" type="warning" :page-count="10" :show-arrows="false" />
 
-              <base-pagination v-model="infoPagination" :page-count="10" :pages-to-display="3" />
+              <BasePagination v-model="infoPagination" :page-count="10" :pages-to-display="3" />
             </div>
           </div>
 

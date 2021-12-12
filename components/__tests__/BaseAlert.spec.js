@@ -36,12 +36,12 @@ describe('BaseAlert props 테스트', () => {
   test('dismissible 테스트', async () => {
     /**
      * 1. default 값 확인 false
-     * 2. 동작 확인 dismissible 값이 true 일 때 dismiss-icon slot이 활성화 기본값 체크한다. button.close
+     * 2. 동작 확인 dismissible 값이 true 일 때 dismiss-icon slot 이 활성화 기본값 체크한다. button.close
      */
     // 1. default 값 확인 false
     expect(wrapper.props().dismissible).toBeFalsy();
 
-    // 2. 동작 확인 dismissible 값이 true 일 때 dismiss-icon slot이 활성화 기본값 체크한다. button.close
+    // 2. 동작 확인 dismissible 값이 true 일 때 dismiss-icon slot 이 활성화 기본값 체크한다. button.close
     expect(wrapper.find('button.close').exists()).toBeFalsy();
     await wrapper.setProps({ dismissible: true });
     expect(wrapper.find('button.close').exists()).toBeTruthy();
@@ -77,7 +77,7 @@ describe('BaseAlert props 테스트', () => {
 describe('BaseAlert slot 테스트', () => {
   test('slot dismiss-icon 확인', async () => {
     /**
-     * 1. dismissible false 일때 셋팅된 slot이 활성화 된다. (기본 slot test는 dismissible props 테스트에서 확인)
+     * 1. dismissible false 일때 셋팅된 slot 이 활성화 된다. (기본 slot test 는 dismissible props 테스트에서 확인)
      */
 
     const slotText = 'SlOT TEST';
@@ -88,7 +88,7 @@ describe('BaseAlert slot 테스트', () => {
       },
     });
 
-    // 1. dismissible false 일때 셋팅된 slot이 활성화 된다. (기본 slot test는 dismissible props 테스트에서 확인)
+    // 1. dismissible false 일때 셋팅된 slot 이 활성화 된다. (기본 slot test 는 dismissible props 테스트에서 확인)
     expect(wrapper.find('.dismiss-icon').exists()).toBe(false);
     await wrapper.setProps({ dismissible: true });
     expect(wrapper.find('.dismiss-icon').exists()).toBe(true);
