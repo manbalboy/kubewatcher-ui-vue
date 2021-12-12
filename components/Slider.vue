@@ -11,21 +11,25 @@
         type: [String, Array, Number],
         description: 'slider value',
       },
+
       disabled: {
         type: Boolean,
         default: false,
         description: 'whether the slider is disabled',
       },
+
       start: {
         type: [Number, Array],
         default: 0,
         description: '[noUi Slider start](https://refreshless.com/nouislider/slider-options/#section-start)',
       },
+
       connect: {
         type: [Boolean, Array],
         default: () => [true, false],
         description: '[noUi Slider connect](https://refreshless.com/nouislider/slider-options/#section-connect)',
       },
+
       range: {
         type: Object,
         default: () => {
@@ -36,11 +40,13 @@
         },
         description: '[noUi Slider range](https://refreshless.com/nouislider/slider-values/#section-range)',
       },
+
       type: {
         type: String,
         default: '',
         description: 'slider type (color) ',
       },
+
       options: {
         type: Object,
         default: () => {
@@ -54,6 +60,7 @@
         slider: null,
       };
     },
+
     watch: {
       value(newValue, oldValue) {
         const slider = this.$el.noUiSlider;
@@ -80,7 +87,9 @@
           range: this.range,
           ...this.options,
         });
+
         const slider = this.$el.noUiSlider;
+
         slider.on('slide', () => {
           const value = slider.get();
           if (value !== this.value) {

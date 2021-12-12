@@ -19,33 +19,60 @@
   export default {
     name: 'BasePagination',
     props: {
+      /**
+       * pagination color type
+       */
       type: {
         type: String,
         default: 'primary',
         validator: value => {
-          return ['default', 'primary', 'danger', 'success', 'warning', 'info'].includes(value);
+          return ['default', 'primary', 'danger', 'success', 'warning', 'info', 'neutral'].includes(value);
         },
       },
+
+      /**
+       * page Count
+       */
       pageCount: {
         type: Number,
         default: 0,
       },
+
+      /**
+       * page 당 숫자
+       */
       perPage: {
         type: Number,
         default: 10,
       },
+
+      /**
+       * 좌우 arrows visible 여부
+       */
       showArrows: {
         type: Boolean,
         default: true,
       },
+
+      /**
+       * total
+       */
       total: {
         type: Number,
         default: 0,
       },
+
+      /**
+       * v-model value
+       */
       value: {
         type: Number,
         default: 1,
       },
+
+      /**
+       * page 가 보여질 갯수
+       */
       pagesToDisplay: {
         type: Number,
         default: 5,
@@ -55,6 +82,7 @@
       paginationClass() {
         return `pagination-${this.type}`;
       },
+
       totalPages() {
         if (this.pageCount > 0) return this.pageCount;
         if (this.total > 0) {
@@ -62,12 +90,14 @@
         }
         return 1;
       },
+
       defaultPagesToDisplay() {
         if (this.totalPages > 0 && this.totalPages < this.pagesToDisplay) {
           return this.totalPages;
         }
         return this.pagesToDisplay;
       },
+
       minPage() {
         if (this.value >= this.defaultPagesToDisplay) {
           const pagesToAdd = Math.floor(this.defaultPagesToDisplay / 2);
@@ -80,6 +110,7 @@
           return 1;
         }
       },
+
       maxPage() {
         if (this.value >= this.defaultPagesToDisplay) {
           const pagesToAdd = Math.floor(this.defaultPagesToDisplay / 2);
@@ -94,6 +125,7 @@
         }
       },
     },
+
     watch: {
       perPage() {
         this.$emit('input', 1);
@@ -102,6 +134,7 @@
         this.$emit('input', 1);
       },
     },
+
     methods: {
       range(min, max) {
         const arr = [];
@@ -110,14 +143,17 @@
         }
         return arr;
       },
+
       changePage(item) {
         this.$emit('input', item);
       },
+
       nextPage() {
         if (this.value < this.totalPages) {
           this.$emit('input', this.value + 1);
         }
       },
+
       prevPage() {
         if (this.value > 1) {
           this.$emit('input', this.value - 1);

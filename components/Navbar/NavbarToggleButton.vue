@@ -13,9 +13,10 @@
     <span class="navbar-toggler-bar bar3"></span>
   </button>
 </template>
+
 <script>
-export default {
-  name: 'navbar-toggle-button'
-};
+  export default {
+    name: 'NavbarToggleButton',
+  };
 </script>
 <style></style>
