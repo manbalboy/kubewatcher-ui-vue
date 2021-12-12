@@ -1,6 +1,6 @@
 import BaseButton from '../../components/BaseButton.vue';
 
-const typeArr = ['default', 'primary', 'info', 'success', 'warning', 'danger'];
+const typeArr = ['default', 'primary', 'info', 'success', 'warning', 'danger', 'neutral', 'link'];
 const sizeArr = ['sm', 'lg'];
 const btnTypeArr = ['button', 'reset', 'submit'];
 

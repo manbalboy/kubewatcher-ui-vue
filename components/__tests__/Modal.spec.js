@@ -473,7 +473,60 @@ describe('Modal methods 및 이벤트 test', () => {
     expect(wrapper.emitted().close).toBeDefined();
   });
 
-  test.todo('scrollModalToBottom() 확인');
+  test('scrollModalToBottom() 확인', async () => {
+    /**
+     * 1. scrollToBottom false 일때는 scrollTop 을 조작하지않고 true 일때만 계산해서 대입한다.
+     */
+
+    // scrollHeight , clientHeight 는 테스트마다 결과값이 달라지므로 Mocking 하였다.
+    const scrollHeight = 400;
+    const clientHeight = 150;
+    let scrollTop = 0;
+    const scrollModalToBottomSpy = jest.spyOn(wrapper.vm, 'scrollModalToBottom').mockImplementation(() => {
+      if (!wrapper.props().scrollToBottom) return;
+      return (scrollTop = scrollHeight - clientHeight);
+    });
+    await wrapper.setProps({ scrollToBottom: false });
+    expect(wrapper.props().scrollToBottom).toBe(false);
+    expect(scrollModalToBottomSpy).not.toHaveBeenCalled();
+
+    // 1. scrollToBottom false 일때는 scrollTop 을 조작하지않고 true 일때만 계산해서 대입한다.
+    wrapper.vm.scrollModalToBottom();
+    expect(scrollModalToBottomSpy).toHaveBeenCalledTimes(1);
+    expect(scrollTop).toBe(0);
+
+    await wrapper.setProps({ scrollToBottom: true });
+    wrapper.vm.scrollModalToBottom();
+    expect(scrollModalToBottomSpy).toHaveBeenCalledTimes(2);
+    expect(scrollTop).toBe(scrollHeight - clientHeight);
+  });
 });
 
-describe('Modal slot 테스트', () => {});
+describe('Modal slot 테스트', () => {
+  beforeEach(() => {
+    wrapper = shallowMount(Modal, {
+      slots: {
+        header: '<div class="test-header">테스트해더</div>',
+        default: '<div class="test-default">테스트바디</div>',
+        footer: '<div class="test-footer">테스트푸터</div>',
+        'close-button': '<div class="test-close-button">테스트닫기버튼</div>',
+      },
+      propsData: {
+        show: true,
+      },
+    });
+  });
+
+  test('default slot 확인', () => {
+    expect(wrapper.find('div.test-default').text()).toBe('테스트바디');
+  });
+  test('default header 확인', () => {
+    expect(wrapper.find('div.test-header').text()).toBe('테스트해더');
+  });
+  test('default close-button 확인', () => {
+    expect(wrapper.find('div.test-close-button').text()).toBe('테스트닫기버튼');
+  });
+  test('default footer 확인', () => {
+    expect(wrapper.find('div.test-footer').text()).toBe('테스트푸터');
+  });
+});

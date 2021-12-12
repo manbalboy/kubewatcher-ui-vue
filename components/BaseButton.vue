@@ -71,7 +71,7 @@
         type: String,
         default: 'default',
         validator: value => {
-          const typeArr = ['default', 'primary', 'info', 'success', 'warning', 'danger'];
+          const typeArr = ['default', 'primary', 'info', 'success', 'warning', 'danger', 'neutral', 'link'];
           return typeArr.includes(value);
         },
         description: 'Button type (primary|secondary|danger etc)',

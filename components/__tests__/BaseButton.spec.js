@@ -158,7 +158,7 @@ describe('BaseButton props test', () => {
      * 2. type 이 셋팅되면 btn-{type} 으로  class 가 생성
      */
     // 1. type validator check
-    const passArray = ['default', 'primary', 'info', 'success', 'warning', 'danger'];
+    const passArray = ['default', 'primary', 'info', 'success', 'warning', 'danger', 'neutral', 'link'];
 
     passArray.forEach(item => {
       expect(wrapper.vm.$options.props.type.validator(item)).toBe(true);
