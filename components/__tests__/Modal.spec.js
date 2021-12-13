@@ -101,7 +101,7 @@ describe('Modal props test', () => {
 
     // 2. 값이 ture 일때는 document.body.appendChild(this.$el) 을 한다.
     const appendChildSpy = jest.spyOn(document.body, 'appendChild');
-    const removeChildSpy = jest.spyOn(document.body, 'appendChild');
+    const removeChildSpy = jest.spyOn(document.body, 'removeChild');
     wrapper = shallowMount(Modal, {
       propsData: {
         show: true,
@@ -482,22 +482,24 @@ describe('Modal methods 및 이벤트 test', () => {
     const scrollHeight = 400;
     const clientHeight = 150;
     let scrollTop = 0;
+    // false 일경우 false 반환
+    await wrapper.setProps({ scrollToBottom: false });
+    expect(wrapper.vm.scrollModalToBottom()).toBe(false);
+
     const scrollModalToBottomSpy = jest.spyOn(wrapper.vm, 'scrollModalToBottom').mockImplementation(() => {
       if (!wrapper.props().scrollToBottom) return;
       return (scrollTop = scrollHeight - clientHeight);
     });
-    await wrapper.setProps({ scrollToBottom: false });
+
     expect(wrapper.props().scrollToBottom).toBe(false);
     expect(scrollModalToBottomSpy).not.toHaveBeenCalled();
 
     // 1. scrollToBottom false 일때는 scrollTop 을 조작하지않고 true 일때만 계산해서 대입한다.
     wrapper.vm.scrollModalToBottom();
-    expect(scrollModalToBottomSpy).toHaveBeenCalledTimes(1);
     expect(scrollTop).toBe(0);
 
     await wrapper.setProps({ scrollToBottom: true });
     wrapper.vm.scrollModalToBottom();
-    expect(scrollModalToBottomSpy).toHaveBeenCalledTimes(2);
     expect(scrollTop).toBe(scrollHeight - clientHeight);
   });
 });
@@ -529,4 +531,15 @@ describe('Modal slot 테스트', () => {
   test('default footer 확인', () => {
     expect(wrapper.find('div.test-footer').text()).toBe('테스트푸터');
   });
+});
+
+test('destroy test', async () => {
+  const destroyedSpy = jest.spyOn(wrapper.vm, '$destroy');
+  const removeChildSpy = jest.spyOn(document.body, 'removeChild');
+
+  await wrapper.setProps({ appendToBody: true });
+  wrapper.vm.$destroy();
+  expect(destroyedSpy).toHaveBeenCalled();
+  expect(removeChildSpy).toHaveBeenCalled();
+  expect(removeChildSpy).toHaveBeenCalledWith(wrapper.vm.$el);
 });

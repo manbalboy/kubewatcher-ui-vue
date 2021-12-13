@@ -204,7 +204,7 @@
       },
 
       scrollModalToBottom() {
-        if (!this.scrollToBottom) return;
+        if (!this.scrollToBottom) return false;
         const elm = this.$refs.modal;
         elm.scrollTop = elm.scrollHeight - elm.clientHeight;
       },
