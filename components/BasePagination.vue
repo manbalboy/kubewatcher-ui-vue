@@ -102,9 +102,11 @@
         if (this.value >= this.defaultPagesToDisplay) {
           const pagesToAdd = Math.floor(this.defaultPagesToDisplay / 2);
           const newMaxPage = pagesToAdd + this.value;
+
           if (newMaxPage > this.totalPages) {
             return this.totalPages - this.defaultPagesToDisplay + 1;
           }
+
           return this.value - pagesToAdd;
         } else {
           return 1;
@@ -115,6 +117,7 @@
         if (this.value >= this.defaultPagesToDisplay) {
           const pagesToAdd = Math.floor(this.defaultPagesToDisplay / 2);
           const newMaxPage = pagesToAdd + this.value;
+
           if (newMaxPage < this.totalPages) {
             return newMaxPage;
           } else {
@@ -137,6 +140,22 @@
 
     methods: {
       range(min, max) {
+        if (typeof min !== 'number') {
+          return [];
+        }
+
+        if (typeof max !== 'number') {
+          return [];
+        }
+
+        if (isNaN(min) || isNaN(max)) {
+          throw new TypeError('NaN');
+        }
+
+        if (min === Infinity || max === Infinity) {
+          throw new TypeError('Infinity');
+        }
+
         const arr = [];
         for (let i = min; i <= max; i++) {
           arr.push(i);
