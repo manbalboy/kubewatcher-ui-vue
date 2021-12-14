@@ -295,7 +295,7 @@
         display: flex;
         align-items: center;
         padding: $padding-base-vertical $padding-base-horizontal 1rem;
-        z-index: 4;
+        z-index: 10;
 
         a.logo-mini,
         a.logo-normal{
@@ -532,7 +532,9 @@
     &[data="vue"]{
       border-top: 2px solid $vue;
     }
-
+    > .top-navbar{
+      padding-left: 280px;
+    }
     > .content {
         padding: 80px 30px 30px 280px;
         min-height: calc(100vh - 70px);
@@ -786,6 +788,9 @@
 
         }
 
+        .top-navbar {
+          padding-left: 130px;
+        }
         .main-panel{
           > .content{
             padding-left: 130px;

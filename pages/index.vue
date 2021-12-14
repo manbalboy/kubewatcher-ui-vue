@@ -129,17 +129,17 @@
           </BaseDropdown>
         </template>
         <div class="table-full-width table-responsive">
-          <task-list></task-list>
+          <TaskList></TaskList>
         </div>
       </card>
     </div>
     <div class="col-lg-7">
       <card class="card" :header-classes="{ 'text-right': isRTL }">
         <h5 slot="header" class="card-title">Management table</h5>
-        <div class="table-responsive"><user-table></user-table></div>
+        <div class="table-responsive"><UserTable></UserTable></div>
       </card>
     </div>
-    <div class="col-lg-12"><country-map-card></country-map-card></div>
+    <div class="col-lg-12"><CountryMapCard></CountryMapCard></div>
   </div>
 </template>
 <script>
@@ -151,6 +151,7 @@
   import CountryMapCard from '@/components/Dashboard/CountryMapCard';
   import StatsCard from '@/components/Cards/StatsCard';
   import config from '@/config';
+  import DashboardNavbar from '@/components/Layout/DashboardNavbar.vue';
 
   const bigChartData = [
     [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
@@ -182,7 +183,20 @@
       TaskList,
       CountryMapCard,
       UserTable,
+      DashboardNavbar,
     },
+
+    // async asyncData(context) {
+    //   console.log(context);
+    //   // eslint-disable-next-line nuxt/no-timing-in-fetch-data
+    //   const wait = _ => new Promise(resolve => setTimeout(resolve, 10000));
+    //   await wait();
+    //   console.log('---------------------------------------------');
+    //   return {
+    //     test: 1,
+    //   };
+    // },
+
     data() {
       return {
         statsCards: [
@@ -283,6 +297,7 @@
           gradientColors: ['rgba(66,134,121,0.15)', 'rgba(66,134,121,0.0)', 'rgba(66,134,121,0)'],
           gradientStops: [1, 0.4, 0],
         },
+
         blueBarChart: {
           extraOptions: chartConfigs.barChartOptions,
           chartData: {
@@ -323,9 +338,18 @@
       },
     },
     mounted() {
+      // this.$nextTick(() => {
+      //   this.$nuxt.$loading.start();
+      //   setTimeout(() => {
+      //     this.$nuxt.$loading.finish();
+      //   }, 5000);
+      // });
       this.initBigChart(0);
     },
     methods: {
+      delay() {
+        return new Promise(resolve => setTimeout(resolve(1), 70000));
+      },
       initBigChart(index) {
         const chartData = {
           datasets: [

@@ -2,7 +2,7 @@
   <BaseNav v-model="showMenu" class="navbar-absolute top-navbar" type="white" :transparent="true">
     <div slot="brand" class="navbar-wrapper">
       <div class="navbar-minimize d-inline">
-        <!--        <SidebarToggleButton />-->
+        <!--                <SidebarToggleButton />-->
       </div>
       <div class="navbar-toggle d-inline" :class="{ toggled: $sidebar.showSidebar }">
         <button type="button" class="navbar-toggler" @click="toggleSidebar">

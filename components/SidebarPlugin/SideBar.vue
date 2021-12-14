@@ -5,7 +5,7 @@
         <a href="#" class="simple-text logo-mini" @click.prevent="$sidebar.toggleMinimize()">
           <img :src="logo" alt="app-logo" />
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a class="simple-text logo-normal">
           {{ title }}
         </a>
       </div>

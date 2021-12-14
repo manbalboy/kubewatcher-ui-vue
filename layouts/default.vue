@@ -1,11 +1,14 @@
 <template>
   <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
-    <notifications></notifications>
-    <SidebarFixedToggleButton />
+    <!--    <notifications></notifications>-->
+    <!--    <SidebarFixedToggleButton />-->
+
     <side-bar
+      style="z-index: 1060"
       :background-color="sidebarBackground"
       :short-title="$t('sidebar.shortTitle')"
       :title="$t('sidebar.title')"
+      @click="toggleSidebar"
     >
       <template slot="links" slot-scope="props">
         <sidebar-item
@@ -145,7 +148,7 @@
       </template>
     </side-bar>
     <!--Share plugin (for demo purposes). You can remove it if don't plan on using it-->
-    <SidebarShare :background-color.sync="sidebarBackground"> </SidebarShare>
+    <!--    <SidebarShare :background-color.sync="sidebarBackground"> </SidebarShare>-->
     <div class="main-panel" :data="sidebarBackground">
       <DashboardNavbar></DashboardNavbar>
       <router-view name="header"></router-view>
@@ -191,8 +194,8 @@
       DashboardNavbar,
       ContentFooter,
       SidebarFixedToggleButton,
-      DashboardContent,
-      SlideYDownTransition,
+      // DashboardContent,
+      // SlideYDownTransition,
       ZoomCenterTransition,
       SidebarShare,
     },
