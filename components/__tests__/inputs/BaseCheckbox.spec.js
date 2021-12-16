@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import BaseCheckbox from '@/components/Inputs/BaseCheckbox.vue';
+import BaseCheckbox from '~/components/Inputs/BaseCheckbox.vue';
 
 describe('BaseCheckbox', () => {
   let wrapper;
