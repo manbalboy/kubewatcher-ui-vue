@@ -9,6 +9,8 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-jest"
   ],
+
+
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -20,6 +22,14 @@ module.exports = {
       use: ['style-loader', 'css-loader', 'sass-loader'],
       include: path.resolve(__dirname, '../'),
     });
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '../'),
+      vue$: 'vue/dist/vue.esm.js'
+    };
+
+
 
     // Return the altered config
     return config;
