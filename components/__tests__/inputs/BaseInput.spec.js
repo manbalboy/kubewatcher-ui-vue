@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import BaseInput from '~/components/Inputs/BaseInput.vue';
-import { propsDefaultCheck } from '~/components/__tests__/test-utils/utils.js';
+import { propsDefaultCheck } from '~/test-utils/utils.js';
 
 describe('BaseInput', () => {
   let wrapper;

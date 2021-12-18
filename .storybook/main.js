@@ -29,8 +29,6 @@ module.exports = {
       vue$: 'vue/dist/vue.esm.js'
     };
 
-
-
     // Return the altered config
     return config;
   },

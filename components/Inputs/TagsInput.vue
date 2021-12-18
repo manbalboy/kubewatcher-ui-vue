@@ -83,12 +83,12 @@
       /**
        * 사용하지않음
        */
-      showInput() {
-        this.inputVisible = true;
-        this.$nextTick(() => {
-          this.$refs.saveTagInput.$refs.input.focus();
-        });
-      },
+      // showInput() {
+      //   this.inputVisible = true;
+      //   this.$nextTick(() => {
+      //     this.$refs.saveTagInput.$refs.input.focus();
+      //   });
+      // },
 
       handleInputConfirm() {
         const inputValue = this.inputValue;
