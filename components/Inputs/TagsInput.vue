@@ -1,16 +1,17 @@
 <template>
   <div>
-    <el-tag
+    <ElTag
       v-for="(tag, index) in dynamicTags"
       :key="tag + index"
       size="small"
       :type="tagType"
       :closable="true"
+      effect="plain"
       :close-transition="false"
       @close="handleClose(tag)"
     >
       {{ tag }}
-    </el-tag>
+    </ElTag>
 
     <input
       ref="saveTagInput"
@@ -19,9 +20,9 @@
       placeholder="Add new tag"
       class="form-control input-new-tag"
       size="mini"
-      @input="onInput"
-      @keyup.enter="handleInputConfirm"
-      @blur="handleInputConfirm"
+      @input="onInput($event)"
+      @keyup.enter="handleInputConfirm($event)"
+      @blur="handleInputConfirm($event)"
     />
   </div>
 </template>
@@ -32,28 +33,36 @@
   export default {
     name: 'TagsInput',
     components: {
-      [Tag.name]: Tag,
+      ElTag: Tag,
     },
     model: {
       prop: 'value',
       event: 'change',
     },
     props: {
+      /**
+       * v-model value 값
+       */
       value: {
         type: Array,
         default: () => [],
         description: 'List of tags',
       },
+
+      /**
+       * Tag style 타입  'primary' | 'gray' | 'success' | 'warning' | 'danger'
+       */
       tagType: {
         type: String,
         default: 'primary',
+        validator: value => ['primary', 'gray', 'success', 'warning', 'danger'].includes(value),
         description: 'Tag type (primary|danger etc)',
       },
     },
     data() {
       return {
         dynamicTags: [],
-        inputVisible: false,
+        // inputVisible: false,
         inputValue: '',
       };
     },
@@ -71,6 +80,9 @@
         this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
         this.$emit('change', this.dynamicTags);
       },
+      /**
+       * 사용하지않음
+       */
       showInput() {
         this.inputVisible = true;
         this.$nextTick(() => {
@@ -84,9 +96,10 @@
           this.dynamicTags.push(inputValue);
           this.$emit('change', this.dynamicTags);
         }
-        this.inputVisible = false;
+        // this.inputVisible = false;
         this.inputValue = '';
       },
+
       onInput(evt) {
         this.$emit('input', evt.target.value);
       },
