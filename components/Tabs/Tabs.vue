@@ -9,7 +9,7 @@
     >
       <ul
         class="nav nav-pills"
-        role="tablist"
+        role="tabList"
         :class="[
           `nav-pills-${type}`,
           { 'nav-pills-icons': square },
@@ -18,17 +18,10 @@
           tabNavClasses,
         ]"
       >
-        <li
-          v-for="tab in tabs"
-          :key="tab.id"
-          class="nav-item active"
-          data-toggle="tab"
-          role="tablist"
-          aria-expanded="true"
-        >
+        <li v-for="tab in tabs" :key="tab.id" class="nav-item active" data-toggle="tab" aria-expanded="true">
           <a
             data-toggle="tab"
-            role="tablist"
+            role="tabList"
             :href="`#${tab.id}`"
             :aria-expanded="tab.active"
             class="nav-link"
@@ -50,23 +43,30 @@
 </template>
 
 <script>
+  import TabItemContent from './TabItemContent';
   export default {
     name: 'Tabs',
     components: {
-      TabItemContent: {
-        props: ['tab'],
-        render(h) {
-          return h('div', [this.tab.$slots.label || this.tab.label]);
-        },
-      },
+      // TabItemContent: {
+      //   props: ['tab'],
+      //   render(h) {
+      //     return h('div', [this.tab.$slots.label || this.tab.label]);
+      //   },
+      // },
+      TabItemContent,
     },
+
     provide() {
       return {
         addTab: this.addTab,
         removeTab: this.removeTab,
       };
     },
+
     props: {
+      /**
+       * tab class type
+       */
       type: {
         type: String,
         default: 'primary',
@@ -75,37 +75,81 @@
           return acceptedValues.includes(value);
         },
       },
-      activeTab: {
-        type: String,
-        default: '',
+
+      /**
+       * tab name // 사용안하는 props
+       */
+      activeTabIndex: {
+        type: Number,
+        default: 0,
       },
+
+      /**
+       * 탭 최상위 class
+       */
       tabNavWrapperClasses: {
         type: [String, Object],
         default: '',
       },
+
+      /**
+       * 탭 ul 클래스
+       */
       tabNavClasses: {
         type: [String, Object],
         default: '',
       },
+
+      /**
+       * 탭 컨텐츠 클래스
+       */
       tabContentClasses: {
         type: [String, Object],
         default: '',
       },
-      vertical: Boolean,
-      square: Boolean,
-      centered: Boolean,
-      value: String,
+
+      /**
+       * 수직여부
+       */
+      vertical: {
+        type: Boolean,
+      },
+
+      /**
+       * 직사각형 여부
+       */
+      square: {
+        type: Boolean,
+      },
+
+      /**
+       * 버튼 중앙 정렬 여부
+       */
+      centered: {
+        type: Boolean,
+      },
+
+      /**
+       * 라벨 선택
+       */
+      value: {
+        type: String,
+        default: '',
+      },
     },
+
     data() {
       return {
         tabs: [],
       };
     },
+
     watch: {
       value(newVal) {
         this.findAndActivateTab(newVal);
       },
     },
+
     mounted() {
       this.$nextTick(() => {
         if (this.value) {
@@ -113,6 +157,7 @@
         }
       });
     },
+
     methods: {
       findAndActivateTab(label) {
         const tabToActivate = this.tabs.find(t => t.label === label);
@@ -120,28 +165,34 @@
           this.activateTab(tabToActivate);
         }
       },
+
       activateTab(tab) {
-        if (this.handleClick) {
-          this.handleClick(tab);
-        }
+        // if (this.handleClick) {
+        //   this.handleClick(tab);
+        // }
         this.deactivateTabs();
         tab.active = true;
       },
+
       deactivateTabs() {
         this.tabs.forEach(tab => {
           tab.active = false;
         });
       },
+
       addTab(tab) {
         const index = this.$slots.default.indexOf(tab.$vnode);
-        if (!this.activeTab && index === 0) {
+        if (!this.activeTabIndex && index === 0) {
           tab.active = true;
         }
-        if (this.activeTab === tab.name) {
+
+        if (this.activeTabIndex === index) {
           tab.active = true;
         }
+
         this.tabs.splice(index, 0, tab);
       },
+
       removeTab(tab) {
         const tabs = this.tabs;
         const index = tabs.indexOf(tab);

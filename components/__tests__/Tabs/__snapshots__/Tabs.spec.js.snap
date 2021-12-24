@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs props 확인 tabNavWrapperClasses 확인 tabNavWrapperClasses 값이 setting 되면 div tag 에 class 값이 셋팅된다. 1`] = `
+"<div>
+  <div class=\\"\\">
+    <ul role=\\"tabList\\" class=\\"nav nav-pills nav-pills-primary\\">
+      <li data-toggle=\\"tab\\" aria-expanded=\\"true\\" class=\\"nav-item active\\"><a data-toggle=\\"tab\\" role=\\"tabList\\" href=\\"#undefined\\" aria-expanded=\\"true\\" class=\\"nav-link active\\">
+          <tabitemcontent-stub tab=\\"[object Object]\\"></tabitemcontent-stub>
+        </a></li>
+      <li data-toggle=\\"tab\\" aria-expanded=\\"true\\" class=\\"nav-item active\\"><a data-toggle=\\"tab\\" role=\\"tabList\\" href=\\"#undefined\\" class=\\"nav-link\\">
+          <tabitemcontent-stub tab=\\"[object Object]\\"></tabitemcontent-stub>
+        </a></li>
+      <li data-toggle=\\"tab\\" aria-expanded=\\"true\\" class=\\"nav-item active\\"><a data-toggle=\\"tab\\" role=\\"tabList\\" href=\\"#undefined\\" class=\\"nav-link\\">
+          <tabitemcontent-stub tab=\\"[object Object]\\"></tabitemcontent-stub>
+        </a></li>
+    </ul>
+  </div>
+  <div class=\\"tab-content tab-space\\">
+    <div class=\\"tab-pane active\\" style=\\"\\" aria-expanded=\\"true\\"></div>
+    <div class=\\"tab-pane\\" style=\\"display: none;\\"></div>
+    <div class=\\"tab-pane\\" style=\\"display: none;\\"></div>
+  </div>
+</div>"
+`;
