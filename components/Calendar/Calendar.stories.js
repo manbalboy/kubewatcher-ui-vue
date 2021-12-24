@@ -18,7 +18,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { Calendar },
-  template: '<Calendar @onClick="onClick" v-bind="$props" />',
+  template: '<Calendar v-bind="$props" />',
 });
 
 export const Primary = Template.bind({});

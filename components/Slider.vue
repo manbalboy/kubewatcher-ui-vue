@@ -79,6 +79,7 @@
     mounted() {
       this.createSlider();
     },
+
     methods: {
       createSlider() {
         noUiSlider.create(this.$el, {

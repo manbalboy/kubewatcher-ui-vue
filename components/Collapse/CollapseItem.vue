@@ -25,9 +25,11 @@
 
   export default {
     name: 'CollapseItem',
+
     components: {
       CollapseTransition,
     },
+
     inject: {
       animationDuration: {
         default: 250,
@@ -36,41 +38,57 @@
         default: false,
       },
       addItem: {
-        default: () => {},
+        default: () => () => {},
       },
       removeItem: {
-        default: () => {},
+        default: () => () => {},
       },
       deactivateAll: {
-        default: () => {},
+        default: () => () => {},
       },
     },
+
     props: {
+      /**
+       * 아코디언의 title
+       */
       title: {
         type: String,
         default: '',
       },
-      id: String,
+
+      /**
+       * item id
+       */
+      id: {
+        type: String,
+        default: '',
+      },
     },
+
     data() {
       return {
         active: false,
       };
     },
+
     computed: {
       itemId() {
         return this.id || this.title;
       },
     },
+
     mounted() {
       this.addItem(this);
     },
+
     destroyed() {
-      if (this.$el && this.$el.parentNode) {
-        this.$el.parentNode.removeChild(this.$el);
+      if (this.$el && this.$parent.$el) {
+        this.$parent.$el.removeChild(this.$el);
       }
       this.removeItem(this);
     },
+
     methods: {
       activate() {
         const wasActive = this.active;

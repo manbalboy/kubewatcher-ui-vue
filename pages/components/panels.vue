@@ -8,30 +8,25 @@
             <h3 class="card-title">Horizontal Tabs</h3>
           </template>
 
-          <tabs type="primary" value="Settings">
-            <tab-pane label="Profile" >
-              Collaboratively administrate empowered markets via plug-and-play
-              networks. Dynamically procrastinate B2C users after installed base
-              benefits. <br /><br />
-              Dramatically visualize customer directed convergence without
-              revolutionary ROI.
-            </tab-pane>
+          <Tabs type="primary" value="Settings">
+            <TabPane label="Profile">
+              Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C
+              users after installed base benefits. <br /><br />
+              Dramatically visualize customer directed convergence without revolutionary ROI.
+            </TabPane>
 
-            <tab-pane label="Settings">
-              Efficiently unleash cross-media information without cross-media
-              value. Quickly maximize timely deliverables for real-time schemas.
-              <br /><br />Dramatically maintain clicks-and-mortar solutions
-              without functional solutions.
-            </tab-pane>
+            <TabPane label="Settings">
+              Efficiently unleash cross-media information without cross-media value. Quickly maximize timely
+              deliverables for real-time schemas.
+              <br /><br />Dramatically maintain clicks-and-mortar solutions without functional solutions.
+            </TabPane>
 
-            <tab-pane label="Options">
-              Completely synergize resource taxing relationships via premier
-              niche markets. Professionally cultivate one-to-one customer
-              service with robust ideas. <br /><br />Dynamically innovate
-              resource-leveling customer service for state of the art customer
-              service.
-            </tab-pane>
-          </tabs>
+            <TabPane label="Options">
+              Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate
+              one-to-one customer service with robust ideas. <br /><br />Dynamically innovate resource-leveling customer
+              service for state of the art customer service.
+            </TabPane>
+          </Tabs>
         </card>
       </div>
 
@@ -42,30 +37,25 @@
             <h3 class="card-title">Vertical Tabs</h3>
           </template>
 
-          <tabs type="primary" vertical class="row">
-            <tab-pane label="Profile">
-              Collaboratively administrate empowered markets via plug-and-play
-              networks. Dynamically procrastinate B2C users after installed base
-              benefits. <br /><br />
-              Dramatically visualize customer directed convergence without
-              revolutionary ROI.
-            </tab-pane>
+          <Tabs type="primary" vertical class="row">
+            <TabPane label="Profile">
+              Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C
+              users after installed base benefits. <br /><br />
+              Dramatically visualize customer directed convergence without revolutionary ROI.
+            </TabPane>
 
-            <tab-pane label="Settings">
-              Efficiently unleash cross-media information without cross-media
-              value. Quickly maximize timely deliverables for real-time schemas.
-              <br /><br />Dramatically maintain clicks-and-mortar solutions
-              without functional solutions.
-            </tab-pane>
+            <TabPane label="Settings">
+              Efficiently unleash cross-media information without cross-media value. Quickly maximize timely
+              deliverables for real-time schemas.
+              <br /><br />Dramatically maintain clicks-and-mortar solutions without functional solutions.
+            </TabPane>
 
-            <tab-pane label="Options">
-              Completely synergize resource taxing relationships via premier
-              niche markets. Professionally cultivate one-to-one customer
-              service with robust ideas. <br /><br />Dynamically innovate
-              resource-leveling customer service for state of the art customer
-              service.
-            </tab-pane>
-          </tabs>
+            <TabPane label="Options">
+              Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate
+              one-to-one customer service with robust ideas. <br /><br />Dynamically innovate resource-leveling customer
+              service for state of the art customer service.
+            </TabPane>
+          </Tabs>
         </card>
       </div>
     </div>
@@ -77,52 +67,40 @@
             <h3 class="card-title">Collapsible Accordion</h3>
           </template>
 
-          <collapse :multiple-active="false" :active-index="0">
-            <collapse-item title="Collapsible Group Item #1">
+          <Collapse :multiple-active="false" :active-index="0">
+            <CollapseItem title="Collapsible Group Item #1">
               <div>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                non cupidatat skateboard dolor brunch. Food truck quinoa
-                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                excepteur butcher vice lomo. Leggings occaecat craft beer
-                farm-to-table, raw denim aesthetic synth nesciunt you probably
-                haven't heard of them accusamus labore sustainable VHS.
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
               </div>
-            </collapse-item>
+            </CollapseItem>
 
-            <collapse-item title="Collapsible Group Item #2">
+            <CollapseItem title="Collapsible Group Item #2">
               <div>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                non cupidatat skateboard dolor brunch. Food truck quinoa
-                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                excepteur butcher vice lomo. Leggings occaecat craft beer
-                farm-to-table, raw denim aesthetic synth nesciunt you probably
-                haven't heard of them accusamus labore sustainable VHS.
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
               </div>
-            </collapse-item>
+            </CollapseItem>
 
-            <collapse-item title="Collapsible Group Item #3">
+            <CollapseItem title="Collapsible Group Item #3">
               <div>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                non cupidatat skateboard dolor brunch. Food truck quinoa
-                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                excepteur butcher vice lomo. Leggings occaecat craft beer
-                farm-to-table, raw denim aesthetic synth nesciunt you probably
-                haven't heard of them accusamus labore sustainable VHS.
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
               </div>
-            </collapse-item>
-          </collapse>
+            </CollapseItem>
+          </Collapse>
         </card>
       </div>
 
@@ -132,35 +110,28 @@
             <h5 class="card-category">Navigation Pills</h5>
             <h3 class="card-title">Vertical Tabs With Icons</h3>
           </template>
-          <tabs
+          <Tabs
             type="primary"
-            tabNavWrapperClasses="col-lg-3 col-md-6"
-            tabContentClasses="col-md-8"
+            tab-nav-wrapper-classes="col-lg-3 col-md-6"
+            tab-content-classes="col-md-8"
             vertical
             square
             class="row"
           >
-            <tab-pane>
-              <span slot="label">
-                <i class="tim-icons icon-istanbul"></i>Home
-              </span>
-              Collaboratively administrate empowered markets via plug-and-play
-              networks. Dynamically procrastinate B2C users after installed base
-              benefits. <br /><br />
-              Dramatically visualize customer directed convergence without
-              revolutionary ROI.
-            </tab-pane>
+            <TabPane>
+              <span slot="label"> <i class="tim-icons icon-istanbul"></i>Home </span>
+              Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C
+              users after installed base benefits. <br /><br />
+              Dramatically visualize customer directed convergence without revolutionary ROI.
+            </TabPane>
 
-            <tab-pane>
-              <span slot="label">
-                <i class="tim-icons icon-settings"></i>Settings
-              </span>
-              Efficiently unleash cross-media information without cross-media
-              value. Quickly maximize timely deliverables for real-time schemas.
-              <br /><br />Dramatically maintain clicks-and-mortar solutions
-              without functional solutions.
-            </tab-pane>
-          </tabs>
+            <TabPane>
+              <span slot="label"> <i class="tim-icons icon-settings"></i>Settings </span>
+              Efficiently unleash cross-media information without cross-media value. Quickly maximize timely
+              deliverables for real-time schemas.
+              <br /><br />Dramatically maintain clicks-and-mortar solutions without functional solutions.
+            </TabPane>
+          </Tabs>
         </card>
       </div>
     </div>
@@ -172,66 +143,49 @@
             <br />
           </template>
 
-          <tabs
-            type="primary"
-            tabContentClasses="tab-subcategories"
-            square
-            centered
-            class="row"
-          >
-            <tab-pane>
-              <span slot="label">
-                <i class="tim-icons icon-istanbul"></i>Home
-              </span>
-              Collaboratively administrate empowered markets via plug-and-play
-              networks. Dynamically procrastinate B2C users after installed base
-              benefits. <br /><br />
-              Dramatically visualize customer directed convergence without
-              revolutionary ROI.
-            </tab-pane>
+          <Tabs type="primary" tab-content-classes="tab-subcategories" square centered class="row">
+            <TabPane>
+              <span slot="label"> <i class="tim-icons icon-istanbul"></i>Home </span>
+              Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C
+              users after installed base benefits. <br /><br />
+              Dramatically visualize customer directed convergence without revolutionary ROI.
+            </TabPane>
 
-            <tab-pane>
-              <span slot="label">
-                <i class="tim-icons icon-bag-16"></i>Messages
-              </span>
-              Efficiently unleash cross-media information without cross-media
-              value. Quickly maximize timely deliverables for real-time schemas.
-              <br /><br />Dramatically maintain clicks-and-mortar solutions
-              without functional solutions.
-            </tab-pane>
+            <TabPane>
+              <span slot="label"> <i class="tim-icons icon-bag-16"></i>Messages </span>
+              Efficiently unleash cross-media information without cross-media value. Quickly maximize timely
+              deliverables for real-time schemas.
+              <br /><br />Dramatically maintain clicks-and-mortar solutions without functional solutions.
+            </TabPane>
 
-            <tab-pane>
-              <span slot="label">
-                <i class="tim-icons icon-settings"></i>Settings
-              </span>
-              Completely synergize resource taxing relationships via premier
-              niche markets. Professionally cultivate one-to-one customer
-              service with robust ideas. <br /><br />Dynamically innovate
-              resource-leveling customer service for state of the art customer
-              service.
-            </tab-pane>
-          </tabs>
+            <TabPane>
+              <span slot="label"> <i class="tim-icons icon-settings"></i>Settings </span>
+              Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate
+              one-to-one customer service with robust ideas. <br /><br />Dynamically innovate resource-leveling customer
+              service for state of the art customer service.
+            </TabPane>
+          </Tabs>
         </card>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { TabPane, Tabs, Collapse, CollapseItem } from '@/components';
+  import { TabPane, Tabs, Collapse, CollapseItem } from '@/components';
 
-export default {
-  name: 'panels',
-  components: {
-    TabPane,
-    Tabs,
-    Collapse,
-    CollapseItem
-  },
-  data() {
-    return {
-      activeName: 'first'
-    };
-  }
-};
+  export default {
+    name: 'Panels',
+    components: {
+      TabPane,
+      Tabs,
+      Collapse,
+      CollapseItem,
+    },
+    data() {
+      return {
+        activeName: 'first',
+      };
+    },
+  };
 </script>
 <style lang="scss"></style>

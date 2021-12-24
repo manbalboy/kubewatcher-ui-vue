@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <full-calendar
+        <FullCalendar
           id="fullCalendar"
           v-bind="calendarOptions"
           ref="fullCalendar"

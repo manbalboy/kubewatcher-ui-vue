@@ -1,24 +1,24 @@
 <template>
   <div class="table-shopping">
-    <el-table style="width: 100%" :data="productsTable">
-      <el-table-column min-width="140">
+    <ElTable style="width: 100%" :data="productsTable">
+      <ElTableColumn min-width="140">
         <div slot-scope="{ row }" class="img-container">
           <img :src="row.image" alt="product image" />
         </div>
-      </el-table-column>
+      </ElTableColumn>
 
-      <el-table-column min-width="270" label="Product">
+      <ElTableColumn min-width="270" label="Product">
         <div slot-scope="{ row }" class="td-name">
           <a href="#jacket">{{ row.title }}</a> <br />
           <small>{{ row.description }}</small>
         </div>
-      </el-table-column>
-      <el-table-column min-width="120" label="Color" prop="color"></el-table-column>
-      <el-table-column min-width="100" label="Size" prop="size"></el-table-column>
-      <el-table-column min-width="100" label="Price" align="center">
+      </ElTableColumn>
+      <ElTableColumn min-width="120" label="Color" prop="color"></ElTableColumn>
+      <ElTableColumn min-width="100" label="Size" prop="size"></ElTableColumn>
+      <ElTableColumn min-width="100" label="Price" align="center">
         <template slot-scope="{ row }"> <small>€</small> {{ row.price }} </template>
-      </el-table-column>
-      <el-table-column min-width="160" label="QTY" align="center">
+      </ElTableColumn>
+      <ElTableColumn min-width="160" label="QTY" align="center">
         <template slot-scope="{ row }">
           <div class="btn-group">
             <base-button type="info" class="btn-simple" size="sm" @click="decreaseQuantity(row)">
@@ -30,17 +30,18 @@
           </div>
           {{ row.quantity }}
         </template>
-      </el-table-column>
-      <el-table-column min-width="100" label="Amount" align="right">
+      </ElTableColumn>
+      <ElTableColumn min-width="100" label="Amount" align="right">
         <template slot-scope="{ row }"> <small>€</small> {{ row.amount }} </template>
-      </el-table-column>
-      <el-table-column min-width="60" label="" align="left">
-        <template slot-scope="{ row }">
+      </ElTableColumn>
+      <ElTableColumn min-width="60" label="" align="left">
+        <!--        <template slot-scope="{ row }">-->
+        <template>
           <base-button type="primary" class="btn-link">
             <i class="tim-icons icon-simple-remove"></i>
           </base-button>
         </template>
-      </el-table-column>
+      </ElTableColumn>
 
       <div slot="append" class="stats-container">
         <div class="stats-total">
@@ -55,16 +56,19 @@
           </base-button>
         </div>
       </div>
-    </el-table>
+    </ElTable>
   </div>
 </template>
+
 <script>
   import { Table, TableColumn } from 'element-ui';
 
   export default {
     components: {
-      [Table.name]: Table,
-      [TableColumn.name]: TableColumn,
+      // [Table.name]: Table,
+      ElTable: Table,
+      // [TableColumn.name]: TableColumn,
+      ElTableColumn: TableColumn,
     },
     data() {
       return {
