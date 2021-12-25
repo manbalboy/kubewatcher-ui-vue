@@ -15,6 +15,7 @@
     model: {
       prop: 'checked',
     },
+
     props: {
       /**
        * v-model value 값
