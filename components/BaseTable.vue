@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable -->
   <table class="table tablesorter" :class="tableClass">
     <thead :class="theadClasses">
       <tr>
@@ -7,6 +8,7 @@
         </slot>
       </tr>
     </thead>
+
     <tbody :class="tbodyClasses">
       <tr v-for="(item, index) in data" :key="index">
         <slot :row="item" :index="index">
@@ -22,41 +24,64 @@
   export default {
     name: 'BaseTable',
     props: {
+      /**
+       * 컬럼 Data Array
+       */
       columns: {
         type: Array,
         default: () => [],
         description: 'Table columns',
       },
+
+      /**
+       * Row Data
+       */
       data: {
         type: Array,
         default: () => [],
         description: 'Table data',
       },
+
+      /**
+       * table class
+       */
       type: {
         type: String, // striped | hover
         default: '',
+        validator: value => ['', 'striped', 'hover'].includes(value),
         description: 'Whether table is striped or hover type',
       },
+
+      /**
+       * thead class
+       */
       theadClasses: {
         type: String,
         default: '',
         description: '<thead> css classes',
       },
+
+      /**
+       * tbody class
+       */
       tbodyClasses: {
         type: String,
         default: '',
         description: '<tbody> css classes',
       },
     },
+
     computed: {
       tableClass() {
         return this.type && `table-${this.type}`;
       },
     },
+
     methods: {
       hasValue(item, column) {
         return item[column.toLowerCase()] !== 'undefined';
       },
+
       itemValue(item, column) {
         return item[column.toLowerCase()];
       },
