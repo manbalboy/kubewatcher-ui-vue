@@ -1,8 +1,8 @@
 {
-  "name": "nuxt-black-dashboard-pro",
-  "version": "1.1.0",
-  "description": "Nuxt Black Dashboard PRO",
-  "author": "cristijora",
+  "name": "kubewatcher-ui-vue",
+  "version": "0.0.1",
+  "description": "Kubewatcher Dashboard",
+  "author": "manbalboy",
   "private": true,
   "scripts": {
     "dev": "nuxt",
