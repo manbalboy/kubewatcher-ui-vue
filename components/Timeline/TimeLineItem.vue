@@ -21,11 +21,26 @@
   export default {
     name: 'TimeLineItem',
     props: {
-      inverted: Boolean,
+      /**
+       * 거꾸로 여부
+       */
+      inverted: {
+        type: Boolean,
+        default: false,
+      },
+
+      /**
+       * 뱃지 타입 (primary|info|success|warning|danger)
+       */
       badgeType: {
         type: String,
         default: 'success',
+        validator: value => ['primary', 'info', 'success', 'warning', 'danger'].includes(value),
       },
+
+      /**
+       * 뱃지 icon
+       */
       badgeIcon: {
         type: String,
         default: '',

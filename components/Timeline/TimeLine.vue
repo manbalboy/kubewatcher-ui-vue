@@ -1,14 +1,19 @@
 <template>
-  <card class="card-timeline card-plain">
+  <Card class="card-timeline card-plain">
     <ul class="timeline" :class="{ 'timeline-simple': type === 'simple' }">
       <slot></slot>
     </ul>
-  </card>
+  </Card>
 </template>
 <script>
+  import Card from '@/components/Cards/Card.vue';
   export default {
     name: 'TimeLine',
+    components: { Card },
     props: {
+      /**
+       * type : simple| ''
+       */
       type: {
         type: String,
         default: '',
