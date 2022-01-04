@@ -67,6 +67,7 @@
     </div>
   </div>
 </template>
+
 <script>
   import { BaseSwitch } from '@/components';
 
@@ -125,6 +126,7 @@
     },
   };
 </script>
+
 <style scoped lang="scss">
   @import '~@/assets/sass/dashboard/custom/variables';
 

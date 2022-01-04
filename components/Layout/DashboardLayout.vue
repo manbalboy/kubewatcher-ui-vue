@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
     <notifications></notifications>
-    <sidebar-fixed-toggle-button />
+    <SidebarFixedToggleButton />
     <side-bar
       :background-color="sidebarBackground"
       :short-title="$t('sidebar.shortTitle')"
@@ -145,18 +145,18 @@
       </template>
     </side-bar>
     <!--Share plugin (for demo purposes). You can remove it if don't plan on using it-->
-    <sidebar-share :background-color.sync="sidebarBackground"> </sidebar-share>
+    <SidebarShare :background-color.sync="sidebarBackground"> </SidebarShare>
     <div class="main-panel" :data="sidebarBackground">
-      <dashboard-navbar></dashboard-navbar>
+      <DashboardNavbar></DashboardNavbar>
       <router-view name="header"></router-view>
 
       <div :class="{ content: !$route.meta.hideContent }" @click="toggleSidebar">
-        <zoom-center-transition :duration="200" mode="out-in">
+        <ZoomCenterTransition :duration="200" mode="out-in">
           <!-- your content here -->
           <nuxt></nuxt>
-        </zoom-center-transition>
+        </ZoomCenterTransition>
       </div>
-      <content-footer v-if="!$route.meta.hideFooter"></content-footer>
+      <ContentFooter v-if="!$route.meta.hideFooter"></ContentFooter>
     </div>
   </div>
 </template>

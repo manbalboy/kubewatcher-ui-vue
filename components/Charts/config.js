@@ -1,13 +1,13 @@
-import tree from "element-ui/packages/table/src/store/tree";
+// import tree from 'element-ui/packages/table/src/store/tree';
 
 export const basicOptions = {
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: false,
   },
-  responsive: true
+  responsive: true,
 };
-export let blueChartOptions = {
+export const blueChartOptions = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
@@ -17,7 +17,7 @@ export let blueChartOptions = {
     xPadding: 12,
     mode: 'nearest',
     intersect: 0,
-    position: 'nearest'
+    position: 'nearest',
   },
   scales: {
     yAxes: [
@@ -26,15 +26,15 @@ export let blueChartOptions = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(29,140,248,0.0)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           suggestedMin: 60,
           suggestedMax: 125,
           padding: 20,
-          fontColor: '#2380f7'
-        }
-      }
+          fontColor: '#2380f7',
+        },
+      },
     ],
 
     xAxes: [
@@ -43,18 +43,18 @@ export let blueChartOptions = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(29,140,248,0.1)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           padding: 20,
-          fontColor: '#2380f7'
-        }
-      }
-    ]
-  }
+          fontColor: '#2380f7',
+        },
+      },
+    ],
+  },
 };
 
-export let lineChartOptionsBlue = {
+export const lineChartOptionsBlue = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
@@ -64,7 +64,7 @@ export let lineChartOptionsBlue = {
     xPadding: 12,
     mode: 'nearest',
     intersect: 0,
-    position: 'nearest'
+    position: 'nearest',
   },
   responsive: true,
   scales: {
@@ -74,15 +74,15 @@ export let lineChartOptionsBlue = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(29,140,248,0.0)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           suggestedMin: 60,
           suggestedMax: 125,
           padding: 20,
-          fontColor: '#9e9e9e'
-        }
-      }
+          fontColor: '#9e9e9e',
+        },
+      },
     ],
 
     xAxes: [
@@ -91,18 +91,18 @@ export let lineChartOptionsBlue = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(29,140,248,0.1)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           padding: 20,
-          fontColor: '#9e9e9e'
-        }
-      }
-    ]
-  }
+          fontColor: '#9e9e9e',
+        },
+      },
+    ],
+  },
 };
 
-export let barChartOptionsGradient = {
+export const barChartOptionsGradient = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
@@ -112,7 +112,7 @@ export let barChartOptionsGradient = {
     xPadding: 12,
     mode: 'nearest',
     intersect: 0,
-    position: 'nearest'
+    position: 'nearest',
   },
   responsive: true,
   scales: {
@@ -121,15 +121,15 @@ export let barChartOptionsGradient = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(253,93,147,0.1)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           suggestedMin: 60,
           suggestedMax: 125,
           padding: 20,
-          fontColor: '#9e9e9e'
-        }
-      }
+          fontColor: '#9e9e9e',
+        },
+      },
     ],
 
     xAxes: [
@@ -137,18 +137,18 @@ export let barChartOptionsGradient = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(253,93,147,0.1)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           padding: 20,
-          fontColor: '#9e9e9e'
-        }
-      }
-    ]
-  }
+          fontColor: '#9e9e9e',
+        },
+      },
+    ],
+  },
 };
 
-export let pieChartOptions = {
+export const pieChartOptions = {
   ...basicOptions,
   cutoutPercentage: 70,
   tooltips: {
@@ -159,7 +159,7 @@ export let pieChartOptions = {
     xPadding: 12,
     mode: 'nearest',
     intersect: 0,
-    position: 'nearest'
+    position: 'nearest',
   },
 
   scales: {
@@ -167,14 +167,14 @@ export let pieChartOptions = {
       {
         display: 0,
         ticks: {
-          display: false
+          display: false,
         },
         gridLines: {
           drawBorder: false,
           zeroLineColor: 'transparent',
-          color: 'rgba(255,255,255,0.05)'
-        }
-      }
+          color: 'rgba(255,255,255,0.05)',
+        },
+      },
     ],
 
     xAxes: [
@@ -184,17 +184,17 @@ export let pieChartOptions = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(255,255,255,0.1)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
-          display: false
-        }
-      }
-    ]
-  }
+          display: false,
+        },
+      },
+    ],
+  },
 };
 
-export let purpleChartOptions = {
+export const purpleChartOptions = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
@@ -204,7 +204,7 @@ export let purpleChartOptions = {
     xPadding: 12,
     mode: 'nearest',
     intersect: 0,
-    position: 'nearest'
+    position: 'nearest',
   },
   scales: {
     yAxes: [
@@ -213,15 +213,15 @@ export let purpleChartOptions = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(29,140,248,0.0)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           suggestedMin: 60,
           suggestedMax: 125,
           padding: 20,
-          fontColor: '#9a9a9a'
-        }
-      }
+          fontColor: '#9a9a9a',
+        },
+      },
     ],
 
     xAxes: [
@@ -230,18 +230,18 @@ export let purpleChartOptions = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(225,78,202,0.1)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           padding: 20,
-          fontColor: '#9a9a9a'
-        }
-      }
-    ]
-  }
+          fontColor: '#9a9a9a',
+        },
+      },
+    ],
+  },
 };
 
-export let orangeChartOptions = {
+export const orangeChartOptions = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
@@ -251,7 +251,7 @@ export let orangeChartOptions = {
     xPadding: 12,
     mode: 'nearest',
     intersect: 0,
-    position: 'nearest'
+    position: 'nearest',
   },
   scales: {
     yAxes: [
@@ -260,15 +260,15 @@ export let orangeChartOptions = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(29,140,248,0.0)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           suggestedMin: 50,
           suggestedMax: 110,
           padding: 20,
-          fontColor: '#ff8a76'
-        }
-      }
+          fontColor: '#ff8a76',
+        },
+      },
     ],
 
     xAxes: [
@@ -277,17 +277,17 @@ export let orangeChartOptions = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(220,53,69,0.1)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           padding: 20,
-          fontColor: '#ff8a76'
-        }
-      }
-    ]
-  }
+          fontColor: '#ff8a76',
+        },
+      },
+    ],
+  },
 };
-export let greenChartOptions = {
+export const greenChartOptions = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
@@ -297,7 +297,7 @@ export let greenChartOptions = {
     xPadding: 12,
     mode: 'nearest',
     intersect: 0,
-    position: 'nearest'
+    position: 'nearest',
   },
   scales: {
     yAxes: [
@@ -306,15 +306,15 @@ export let greenChartOptions = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(29,140,248,0.0)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           suggestedMin: 50,
           suggestedMax: 125,
           padding: 20,
-          fontColor: '#9e9e9e'
-        }
-      }
+          fontColor: '#9e9e9e',
+        },
+      },
     ],
 
     xAxes: [
@@ -323,18 +323,18 @@ export let greenChartOptions = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(0,242,195,0.1)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           padding: 20,
-          fontColor: '#9e9e9e'
-        }
-      }
-    ]
-  }
+          fontColor: '#9e9e9e',
+        },
+      },
+    ],
+  },
 };
 
-export let barChartOptions = {
+export const barChartOptions = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
@@ -344,7 +344,7 @@ export let barChartOptions = {
     xPadding: 12,
     mode: 'nearest',
     intersect: 0,
-    position: 'nearest'
+    position: 'nearest',
   },
   scales: {
     yAxes: [
@@ -352,28 +352,28 @@ export let barChartOptions = {
         gridLines: {
           drawBorder: false,
           color: 'rgba(29,140,248,0.1)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           suggestedMin: 60,
           suggestedMax: 120,
           padding: 20,
-          fontColor: '#9e9e9e'
-        }
-      }
+          fontColor: '#9e9e9e',
+        },
+      },
     ],
     xAxes: [
       {
         gridLines: {
           drawBorder: false,
           color: 'rgba(29,140,248,0.1)',
-          zeroLineColor: 'transparent'
+          zeroLineColor: 'transparent',
         },
         ticks: {
           padding: 20,
-          fontColor: '#9e9e9e'
-        }
-      }
-    ]
-  }
+          fontColor: '#9e9e9e',
+        },
+      },
+    ],
+  },
 };

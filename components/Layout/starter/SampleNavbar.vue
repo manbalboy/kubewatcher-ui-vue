@@ -61,14 +61,14 @@
   </BaseNav>
 </template>
 <script>
-  import { CollapseTransition } from 'vue2-transitions';
+  // import { CollapseTransition } from 'vue2-transitions';
   import SidebarToggleButton from '../SidebarToggleButton';
   import { BaseNav, Modal } from '@/components';
 
   export default {
     components: {
       SidebarToggleButton,
-      CollapseTransition,
+      // CollapseTransition,
       BaseNav,
       Modal,
     },

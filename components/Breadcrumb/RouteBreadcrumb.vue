@@ -19,6 +19,7 @@
       BreadCrumb,
       BreadCrumbItem,
     },
+
     computed: {
       routeName() {
         const { path } = this.$route;
@@ -26,6 +27,7 @@
         return parts.map(p => this.capitalizeFirstLetter(p)).join(' ');
       },
     },
+
     methods: {
       capitalizeFirstLetter(string) {
         if (!string || typeof string !== 'string') {

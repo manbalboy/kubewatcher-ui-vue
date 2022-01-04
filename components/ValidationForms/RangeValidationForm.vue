@@ -1,18 +1,18 @@
 <template>
   <form class="form-horizontal">
-    <card>
+    <Card>
       <h4 slot="header" class="card-title">Range Validation</h4>
       <div>
         <div class="row">
           <label class="col-sm-2 col-form-label">Min Length</label>
           <div class="col-sm-7">
-            <base-input
+            <BaseInput
               v-model="model.minLength"
               v-validate="modelValidations.minLength"
               name="minLength"
               :error="getError('minLength')"
             >
-            </base-input>
+            </BaseInput>
           </div>
           <label class="col-sm-3 label-on-right"><code>min="5"</code></label>
         </div>
@@ -20,13 +20,13 @@
         <div class="row">
           <label class="col-sm-2 col-form-label">Max Length</label>
           <div class="col-sm-7">
-            <base-input
+            <BaseInput
               v-model="model.maxLength"
               v-validate="modelValidations.maxLength"
               name="maxLength"
               :error="getError('maxLength')"
             >
-            </base-input>
+            </BaseInput>
           </div>
           <label class="col-sm-3 label-on-right"><code>max="5"</code></label>
         </div>
@@ -34,13 +34,13 @@
         <div class="row">
           <label class="col-sm-2 col-form-label">Range</label>
           <div class="col-sm-7">
-            <base-input
+            <BaseInput
               v-model="model.range"
               v-validate="modelValidations.range"
               name="range"
               :error="getError('range')"
             >
-            </base-input>
+            </BaseInput>
           </div>
           <label class="col-sm-3 label-on-right"><code>min_value="6", max_value="10"</code></label>
         </div>
@@ -48,13 +48,13 @@
         <div class="row">
           <label class="col-sm-2 col-form-label">Min Value</label>
           <div class="col-sm-7">
-            <base-input
+            <BaseInput
               v-model="model.minValue"
               v-validate="modelValidations.minValue"
               name="minValue"
               :error="getError('minValue')"
             >
-            </base-input>
+            </BaseInput>
           </div>
           <label class="col-sm-3 label-on-right"><code>min_value="6"</code></label>
         </div>
@@ -62,25 +62,32 @@
         <div class="row">
           <label class="col-sm-2 col-form-label">Max Value</label>
           <div class="col-sm-7">
-            <base-input
+            <BaseInput
               v-model="model.maxValue"
               v-validate="modelValidations.maxValue"
               name="maxValue"
               :error="getError('maxValue')"
             >
-            </base-input>
+            </BaseInput>
           </div>
           <label class="col-sm-3 label-on-right"><code>max_value="6"</code></label>
         </div>
       </div>
       <div class="text-center">
-        <base-button native-type="submit" type="primary" @click.native.prevent="validate">Validate inputs</base-button>
+        <BaseButton native-type="submit" type="primary" @click.native.prevent="validate">Validate inputs</BaseButton>
       </div>
-    </card>
+    </Card>
   </form>
 </template>
 <script>
+  import { BaseButton, BaseInput, Card } from '@/components/index.js';
   export default {
+    name: 'RangeValidationForm',
+    components: {
+      BaseButton,
+      BaseInput,
+      Card,
+    },
     data() {
       return {
         model: {

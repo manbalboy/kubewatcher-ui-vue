@@ -1,9 +1,9 @@
 <template>
   <form>
-    <card footer-classes="text-left">
+    <Card footer-classes="text-left">
       <div slot="header"><h4 class="card-title">Login Form</h4></div>
       <div>
-        <base-input
+        <BaseInput
           v-model="model.fullName"
           v-validate="modelValidations.fullName"
           label="Full Name"
@@ -11,9 +11,9 @@
           :error="getError('full name')"
           name="full name"
         >
-        </base-input>
+        </BaseInput>
 
-        <base-input
+        <BaseInput
           v-model="model.email"
           v-validate="modelValidations.email"
           label="Email address"
@@ -22,9 +22,9 @@
           name="email"
           type="email"
         >
-        </base-input>
+        </BaseInput>
 
-        <base-input
+        <BaseInput
           v-model="model.password"
           v-validate="modelValidations.password"
           label="Passowrd"
@@ -33,19 +33,26 @@
           :error="getError('password')"
           type="password"
         >
-        </base-input>
+        </BaseInput>
         <div class="category form-category">* Required fields</div>
       </div>
 
       <template slot="footer">
-        <base-button native-type="submit" type="primary" @click.native.prevent="validate">Login</base-button>
+        <BaseButton native-type="submit" type="primary" @click.native.prevent="validate">Login</BaseButton>
         <a href="javascript:void(0)" class="pull-right">Forgot password?</a>
       </template>
-    </card>
+    </Card>
   </form>
 </template>
 <script>
+  import { BaseButton, BaseInput, Card } from '@/components/index.js';
   export default {
+    name: 'LoginForm',
+    components: {
+      BaseButton,
+      BaseInput,
+      Card,
+    },
     data() {
       return {
         model: {

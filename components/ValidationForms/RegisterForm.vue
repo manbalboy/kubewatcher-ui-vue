@@ -52,6 +52,7 @@
   import { BaseCheckbox, BaseInput } from '@/components/index';
 
   export default {
+    name: 'RegisterForm',
     components: {
       BaseCheckbox,
       BaseInput,

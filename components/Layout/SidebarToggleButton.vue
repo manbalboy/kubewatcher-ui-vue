@@ -12,6 +12,7 @@
     </button>
   </el-tooltip>
 </template>
+
 <script>
   export default {
     name: 'SidebarToggleButton',

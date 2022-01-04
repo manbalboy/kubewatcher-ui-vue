@@ -1,40 +1,35 @@
 import { Line, mixins } from 'vue-chartjs';
 
 export default {
-  name: 'line-chart',
+  name: 'LineChart',
   extends: Line,
   mixins: [mixins.reactiveProp],
   props: {
     extraOptions: Object,
     gradientColors: {
       type: Array,
-      default: () => [
-        'rgba(72,72,176,0.2)',
-        'rgba(72,72,176,0.0)',
-        'rgba(119,52,169,0)'
-      ],
+      default: () => ['rgba(72,72,176,0.2)', 'rgba(72,72,176,0.0)', 'rgba(119,52,169,0)'],
       validator: val => {
         return val.length > 1;
-      }
+      },
     },
     gradientStops: {
       type: Array,
       default: () => [1, 0.4, 0],
       validator: val => {
         return val.length > 1;
-      }
-    }
+      },
+    },
   },
   data() {
     return {
-      ctx: null
+      ctx: null,
     };
   },
   methods: {
     updateGradients(chartData) {
       if (!chartData) return;
-      const ctx =
-        this.ctx || document.getElementById(this.chartId).getContext('2d');
+      const ctx = this.ctx || document.getElementById(this.chartId).getContext('2d');
       const gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
       this.gradientStops.forEach((stop, index) => {
@@ -45,7 +40,7 @@ export default {
           set.backgroundColor = gradientStroke;
         }
       });
-    }
+    },
   },
   mounted() {
     this.$watch(
@@ -56,7 +51,7 @@ export default {
           this.renderChart(this.chartData, this.extraOptions);
         }
       },
-      { immediate: true }
+      { immediate: true },
     );
-  }
+  },
 };
