@@ -47,7 +47,12 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/pwa', '@nuxtjs/axios', 'nuxt-i18n'],
+  modules: [
+    '@nuxtjs/pwa',
+    '@nuxtjs/axios',
+    'nuxt-i18n',
+    ['~/modules/log/', { logBaseDirectoryPath: 'logs', isJson: true, isFileWrite: true }],
+  ],
   i18n: {
     locales: [
       {
