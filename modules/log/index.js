@@ -41,7 +41,7 @@ export default function logModule(logOptions) {
     const errorLog = new winstonDaily({
       level: 'error',
       datePattern: 'YYYY-MM-DD-HH',
-      dirname: path.join(__dirname, `../../${logDirectory}`, '/error'),
+      dirname: path.join(process.cwd(), `/${logDirectory}`, '/error'),
       filename: `${os.hostname}.%DATE%.error.log`,
     });
 
@@ -51,7 +51,7 @@ export default function logModule(logOptions) {
     const allLog = new winstonDaily({
       level: 'debug',
       datePattern: 'YYYY-MM-DD-HH',
-      dirname: path.join(__dirname, `../../${logDirectory}`, '/all'),
+      dirname: path.join(process.cwd(), `/${logDirectory}`, '/all'),
       filename: `${os.hostname}.%DATE%.all.log`,
     });
 
