@@ -74,13 +74,16 @@ export default function logModule(logOptions) {
 
   this.nuxt.hook('render:setupMiddleware', app => {
     app.use((req, res, next) => {
-      Logger.log({
-        level: 'access',
-        message: '',
-        resStatusCode: res.statusCode,
-        reqUrl: req.url,
-        // reqHeader: req.headers,
+      res.on('finish', () => {
+        Logger.log({
+          level: 'access',
+          message: '',
+          resStatusCode: res.statusCode,
+          reqUrl: req.url,
+          // reqHeader: req.headers,
+        });
       });
+
       next();
     });
   });

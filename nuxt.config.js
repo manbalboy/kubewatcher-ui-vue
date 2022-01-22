@@ -51,6 +51,17 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/axios',
     'nuxt-i18n',
+    [
+      '~/modules/prometheus/',
+      {
+        port: 9091,
+        metrics: {
+          collectDefault: true,
+          requestDuration: true,
+        },
+      },
+    ],
+
     ['~/modules/log/', { logBaseDirectoryPath: 'logs', isJson: true, isFileWrite: true }],
   ],
   i18n: {
