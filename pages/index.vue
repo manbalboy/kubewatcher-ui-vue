@@ -187,16 +187,16 @@
     },
     // asyncData() {},
 
-    async asyncData(context) {
-      console.log(process.env.TEST_ENV);
-      // eslint-disable-next-line nuxt/no-timing-in-fetch-data
-      const wait = _ => new Promise(resolve => setTimeout(resolve, 10000));
-      await wait();
-      console.log('---------------------------------------------');
-      return {
-        test: 1,
-      };
-    },
+    // async asyncData(context) {
+    //   console.log(process.env.TEST_ENV);
+    //   // eslint-disable-next-line nuxt/no-timing-in-fetch-data
+    //   const wait = _ => new Promise(resolve => setTimeout(resolve, 10000));
+    //   await wait();
+    //   console.log('---------------------------------------------');
+    //   return {
+    //     test: 1,
+    //   };
+    // },
 
     data() {
       return {

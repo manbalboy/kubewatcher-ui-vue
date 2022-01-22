@@ -52,6 +52,12 @@ export default {
     '@nuxtjs/axios',
     'nuxt-i18n',
     [
+      '~/modules/log/',
+      {
+        IS_JSON_FORMAT: false,
+      },
+    ],
+    [
       '~/modules/prometheus/',
       {
         port: 9091,
@@ -61,8 +67,6 @@ export default {
         },
       },
     ],
-
-    ['~/modules/log/', { logBaseDirectoryPath: 'logs', isJson: true, isFileWrite: true }],
   ],
   i18n: {
     locales: [
