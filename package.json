@@ -67,12 +67,11 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.5",
     "node-sass": "^5.0.0",
+    "nuxt-logger-winston": "0.0.7",
     "prettier": "^2.3.2",
     "prom-client": "^14.0.1",
     "sass-loader": "^10.1.1",
     "vue-jest": "^3.0.4",
-    "vue-loader": "^15.9.8",
-    "winston": "^3.4.0",
-    "winston-daily-rotate-file": "^4.5.5"
+    "vue-loader": "^15.9.8"
   }
 }

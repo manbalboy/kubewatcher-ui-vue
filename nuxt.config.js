@@ -52,9 +52,9 @@ export default {
     '@nuxtjs/axios',
     'nuxt-i18n',
     [
-      '~/modules/log/',
+      'nuxt-logger-winston',
       {
-        IS_JSON_FORMAT: false,
+        IS_JSON_FORMAT: true,
       },
     ],
     [
