@@ -1,3 +1,5 @@
+import KUBE_WATCHER from './config/banner.js';
+
 export default {
   /*
    ** Headers of the page
@@ -54,7 +56,7 @@ export default {
     [
       'nuxt-logger-winston',
       {
-        IS_JSON_FORMAT: true,
+        BANNER_STRING: KUBE_WATCHER,
       },
     ],
     [
