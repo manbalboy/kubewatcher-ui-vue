@@ -1,267 +1,138 @@
 <template>
-  <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
-    <!--    <notifications></notifications>-->
-    <!--    <SidebarFixedToggleButton />-->
-
-    <side-bar
-      style="z-index: 1060"
-      :background-color="sidebarBackground"
-      :short-title="$t('sidebar.shortTitle')"
-      :title="$t('sidebar.title')"
-      @click="toggleSidebar"
-    >
-      <template slot="links" slot-scope="props">
-        <sidebar-item
-          :link="{
-            name: $t('sidebar.dashboard'),
-            icon: 'tim-icons icon-chart-pie-36',
-            path: '/',
-          }"
-        >
-        </sidebar-item>
-        <sidebar-item :link="{ name: $t('sidebar.pages'), icon: 'tim-icons icon-image-02' }">
-          <sidebar-item :link="{ name: $t('sidebar.pricing'), path: '/pricing' }"></sidebar-item>
-          <sidebar-item :link="{ name: $t('sidebar.rtl'), path: localePath('pages-rtl', 'ar') }"></sidebar-item>
-          <sidebar-item :link="{ name: $t('sidebar.timeline'), path: '/pages/timeline' }"></sidebar-item>
-          <sidebar-item :link="{ name: $t('sidebar.login'), path: '/login' }"></sidebar-item>
-          <sidebar-item :link="{ name: $t('sidebar.register'), path: '/register' }"></sidebar-item>
-          <sidebar-item :link="{ name: $t('sidebar.lock'), path: '/lock' }"></sidebar-item>
-          <sidebar-item :link="{ name: $t('sidebar.userProfile'), path: '/pages/user' }"></sidebar-item>
-        </sidebar-item>
-        <sidebar-item
-          :link="{
-            name: $t('sidebar.components'),
-            icon: 'tim-icons icon-molecule-40',
-          }"
-        >
-          <sidebar-item :link="{ name: $t('sidebar.multiLevelCollapse') }">
-            <sidebar-item
-              :link="{
-                name: $t('sidebar.example'),
-                isRoute: false,
-                path: 'https://google.com',
-                target: '_blank',
-              }"
-            ></sidebar-item>
-          </sidebar-item>
-
-          <sidebar-item :link="{ name: $t('sidebar.buttons'), path: '/components/buttons' }"></sidebar-item>
-          <sidebar-item
-            :link="{
-              name: $t('sidebar.gridSystem'),
-              path: '/components/grid-system',
-            }"
-          ></sidebar-item>
-          <sidebar-item :link="{ name: $t('sidebar.panels'), path: '/components/panels' }"></sidebar-item>
-          <sidebar-item
-            :link="{
-              name: $t('sidebar.sweetAlert'),
-              path: '/components/sweet-alert',
-            }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{
-              name: $t('sidebar.notifications'),
-              path: '/components/notifications',
-            }"
-          ></sidebar-item>
-          <sidebar-item :link="{ name: $t('sidebar.icons'), path: '/components/icons' }"></sidebar-item>
-          <sidebar-item
-            :link="{
-              name: $t('sidebar.typography'),
-              path: '/components/typography',
-            }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item :link="{ name: $t('sidebar.forms'), icon: 'tim-icons icon-notes' }">
-          <sidebar-item :link="{ name: $t('sidebar.regularForms'), path: '/forms/regular' }"></sidebar-item>
-          <sidebar-item
-            :link="{
-              name: $t('sidebar.extendedForms'),
-              path: '/forms/extended',
-            }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{
-              name: $t('sidebar.validationForms'),
-              path: '/forms/validation',
-            }"
-          ></sidebar-item>
-          <sidebar-item :link="{ name: $t('sidebar.wizard'), path: '/forms/wizard' }"></sidebar-item>
-        </sidebar-item>
-        <sidebar-item
-          :link="{
-            name: $t('sidebar.tables'),
-            icon: 'tim-icons icon-puzzle-10',
-          }"
-        >
-          <sidebar-item
-            :link="{
-              name: $t('sidebar.regularTables'),
-              path: '/table-list/regular',
-            }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{
-              name: $t('sidebar.extendedTables'),
-              path: '/table-list/extended',
-            }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{
-              name: $t('sidebar.paginatedTables'),
-              path: '/table-list/paginated',
-            }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item :link="{ name: $t('sidebar.maps'), icon: 'tim-icons icon-pin' }">
-          <sidebar-item :link="{ name: $t('sidebar.googleMaps'), path: '/maps/google' }"></sidebar-item>
-          <sidebar-item
-            :link="{
-              name: $t('sidebar.fullScreenMaps'),
-              path: '/maps/full-screen',
-            }"
-          ></sidebar-item>
-          <sidebar-item :link="{ name: $t('sidebar.vectorMaps'), path: '/maps/vector-map' }"></sidebar-item>
-        </sidebar-item>
-        <sidebar-item
-          :link="{
-            name: $t('sidebar.widgets'),
-            icon: 'tim-icons icon-settings',
-            path: '/widgets',
-          }"
-        ></sidebar-item>
-        <sidebar-item
-          :link="{
-            name: $t('sidebar.charts'),
-            icon: 'tim-icons icon-chart-bar-32',
-            path: '/charts',
-          }"
-        ></sidebar-item>
-        <sidebar-item
-          :link="{
-            name: $t('sidebar.calendar'),
-            icon: 'tim-icons icon-time-alarm',
-            path: '/calendar',
-          }"
-        ></sidebar-item>
-      </template>
-    </side-bar>
-    <!--Share plugin (for demo purposes). You can remove it if don't plan on using it-->
-    <!--    <SidebarShare :background-color.sync="sidebarBackground"> </SidebarShare>-->
-    <div class="main-panel" :data="sidebarBackground">
-      <DashboardNavbar></DashboardNavbar>
-      <router-view name="header"></router-view>
-
-      <div :class="{ content: !isFullScreenRoute }" @click="toggleSidebar">
-        <ZoomCenterTransition :duration="200" mode="out-in">
-          <!-- your content here -->
-          <nuxt></nuxt>
-        </ZoomCenterTransition>
+  <div id="wrapper">
+    <div class="lef-nav bg-gradient-hanwha">
+      <div class="row d-flex lef-sidebar-brand">
+        <div class="logo-img"><img src="" alt="" /></div>
+        <div class="lef-sidebar-brand-text">Kube<br />Watcher</div>
       </div>
-      <ContentFooter v-if="!isFullScreenRoute"></ContentFooter>
+
+      <div id="lnb">
+        <ul>
+          <li class="heading lef-sidebar-brand-sub-text noDepth">
+            <div class="row">
+              <div class="col-lg-12 h5 font-weight-bold text-light text-uppercase">local</div>
+              <div class="col-lg-12">
+                <div class="circle c_normal"></div>
+                <span>Connected</span>
+              </div>
+            </div>
+          </li>
+          <li class="on open">
+            <a href="#none" role="button">
+              <i class="feather icon-bar-chart-2"></i>&nbsp;<span class="lef-sidebar-brand-sub-text">Dashboard</span>
+            </a>
+            <ul>
+              <li class="noDepth"><a href="/main">Overview</a></li>
+              <li class="noDepth"><a href="/monitoring/application/overview">Application (K8s)</a></li>
+              <li class="dropright">
+                <a id="dropdownNode" href="#none" role="button" data-toggle="side-dropdown">K8s Boards</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownNode">
+                  <li class="noDepth"><a href="/monitoring/cluster/overview">K8s Overview</a></li>
+                  <li class="noDepth"><a href="/monitoring/vm/overview">Cluster Node Overview</a></li>
+                  <li class="noDepth"><a href="/monitoring/vm/monitoring">Cluster Node Detail</a></li>
+                  <li class="noDepth"><a href="/monitoring/jvm/overview">Pod JVM Overview</a></li>
+                  <li class="noDepth"><a href="/monitoring/jvm/application">Pod JVM Detail</a></li>
+                </ul>
+              </li>
+              <li class="noDepth"><a href="/monitoring/database">Database</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#none" role="button">
+              <i class="feather icon-box"></i>&nbsp;<span class="lef-sidebar-brand-sub-text">K8s Cluster</span>
+            </a>
+            <ul>
+              <li class="noDepth"><a href="/monitoring/cluster/nodes">Nodes</a></li>
+              <li class="dropright">
+                <a id="dropdownWorkload" href="#none" role="button" data-toggle="side-dropdown">Workloads</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownWorkload">
+                  <li class="noDepth"><a href="/monitoring/cluster/workloads/overview">Overview</a></li>
+                  <li class="noDepth"><a href="/monitoring/cluster/workloads/pods">Pods</a></li>
+                  <li class="noDepth"><a href="/monitoring/cluster/workloads/deployments">Deployments</a></li>
+                  <li class="noDepth"><a href="/monitoring/cluster/workloads/statefulsets">StatefulSets</a></li>
+                  <li class="noDepth"><a href="/monitoring/cluster/workloads/daemonsets">DaemonSets</a></li>
+                  <li class="noDepth"><a href="/monitoring/cluster/workloads/jobs">Jobs</a></li>
+                  <li class="noDepth"><a href="/monitoring/cluster/workloads/cronjobs">CronJobs</a></li>
+                </ul>
+              </li>
+              <li class="noDepth"><a href="/monitoring/cluster/storages">Storages</a></li>
+              <li class="dropright">
+                <a id="dropdownConfig" href="#none" role="button" data-toggle="side-dropdown">Configuration</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownConfig">
+                  <li class="noDepth"><a href="/cluster/config/configmaps">Configmaps</a></li>
+                  <li class="noDepth"><a href="/cluster/config/resource-quotas">Resource Quotas</a></li>
+                  <li class="noDepth"><a href="/cluster/config/hpa">HPA</a></li>
+                  <li class="noDepth"><a href="/cluster/config/namespaces">Namespaces</a></li>
+                  <li class="noDepth"><a href="/cluster/config/custom-resources">Custom Resources</a></li>
+                </ul>
+              </li>
+              <li class="dropright">
+                <a id="dropdownNetwork" href="#none" role="button" data-toggle="side-dropdown">Network</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownNetwork">
+                  <li class="noDepth"><a href="/cluster/network/services">Services</a></li>
+                  <li class="noDepth"><a href="/cluster/network/ingress">Ingresses</a></li>
+                  <li class="noDepth"><a href="/cluster/network/endpoints">Endpoints</a></li>
+                  <li class="noDepth"><a href="/cluster/network/policies">Network Policies</a></li>
+                </ul>
+              </li>
+              <li class="dropright">
+                <a id="dropdownAccess" href="#none" role="button" data-toggle="side-dropdown">Access Control</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownAccess">
+                  <li class="noDepth"><a href="/cluster/acl/service-accounts">Service Accounts</a></li>
+                  <li class="noDepth"><a href="/cluster/acl/role-bindings">Role Bindings</a></li>
+                  <li class="noDepth"><a href="/cluster/acl/roles">Roles</a></li>
+                  <li class="noDepth"><a href="/cluster/config/secrets">Secrets</a></li>
+                  <li class="noDepth"><a href="/cluster/acl/pod-security-policies">Pod Security Policies</a></li>
+                </ul>
+              </li>
+              <li class="noDepth"><a href="/monitoring/cluster/events">Events</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#none" role="button">
+              <i class="feather icon-bell"></i>&nbsp;<span class="lef-sidebar-brand-sub-text">Alarm</span>
+            </a>
+            <ul>
+              <li class="noDepth"><a href="/monitoring/alarm/list">List</a></li>
+              <li class="noDepth"><a href="/setting/alarm/list">Config</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#none" role="button">
+              <i class="feather icon-user"></i>&nbsp;<span class="lef-sidebar-brand-sub-text">Users</span>
+            </a>
+            <ul>
+              <li class="noDepth"><a href="/security/groups">Groups</a></li>
+              <li class="noDepth"><a href="/security/users">Users</a></li>
+              <li class="noDepth"><a href="/security/roles/user-role-management">Roles</a></li>
+            </ul>
+          </li>
+          <li class="noDepth">
+            <a href="/application/usage/usage-overview"
+              ><i class="feather icon-pie-chart"></i>&nbsp;<span class="lef-sidebar-brand-sub-text"
+                >Cluster Usage</span
+              ></a
+            >
+          </li>
+          <li class="noDepth">
+            <a href="/setting/preference"
+              ><i class="feather icon-settings"></i>&nbsp;<span class="lef-sidebar-brand-sub-text">Preference</span></a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="text-center d-none d-md-inline">
+        <button id="sidebarToggle" class="rounded-circle_l border-0"><i class="feather icon-chevrons-left"></i></button>
+      </div>
     </div>
+    <Nuxt></Nuxt>
   </div>
 </template>
-<script>
-  /* eslint-disable no-new */
-  import PerfectScrollbar from 'perfect-scrollbar';
-  import 'perfect-scrollbar/css/perfect-scrollbar.css';
-  import { SlideYDownTransition, ZoomCenterTransition } from 'vue2-transitions';
-  import SidebarShare from '@/components/Layout/SidebarSharePlugin';
+<script></script>
 
-  import DashboardNavbar from '@/components/Layout/DashboardNavbar.vue';
-  import ContentFooter from '@/components/Layout/ContentFooter.vue';
-  import DashboardContent from '@/components/Layout/Content.vue';
-  import SidebarFixedToggleButton from '@/components/Layout/SidebarFixedToggleButton.vue';
-  function hasElement(className) {
-    return document.getElementsByClassName(className).length > 0;
-  }
-
-  function initScrollbar(className) {
-    if (hasElement(className)) {
-      new PerfectScrollbar(`.${className}`);
-    } else {
-      // try to init it later in case this component is loaded async
-      setTimeout(() => {
-        initScrollbar(className);
-      }, 100);
-    }
-  }
-
-  export default {
-    components: {
-      DashboardNavbar,
-      ContentFooter,
-      SidebarFixedToggleButton,
-      // DashboardContent,
-      // SlideYDownTransition,
-      ZoomCenterTransition,
-      SidebarShare,
-    },
-    data() {
-      return {
-        sidebarBackground: 'vue', // vue|blue|orange|green|red|primary
-      };
-    },
-    computed: {
-      isFullScreenRoute() {
-        return this.$route.path === '/maps/full-screen';
-      },
-    },
-    mounted() {
-      this.initScrollbar();
-    },
-    methods: {
-      toggleSidebar() {
-        if (this.$sidebar.showSidebar) {
-          this.$sidebar.displaySidebar(false);
-        }
-      },
-      initScrollbar() {
-        const docClasses = document.body.classList;
-        const isWindows = navigator.platform.startsWith('Win');
-        if (isWindows) {
-          // if we are on windows OS we activate the perfectScrollbar function
-          initScrollbar('sidebar');
-          initScrollbar('main-panel');
-          initScrollbar('sidebar-wrapper');
-
-          docClasses.add('perfect-scrollbar-on');
-        } else {
-          docClasses.add('perfect-scrollbar-off');
-        }
-      },
-    },
-  };
-</script>
-<style lang="scss">
-  $scaleSize: 0.95;
-  @keyframes zoomIn95 {
-    from {
-      opacity: 0;
-      transform: scale3d($scaleSize, $scaleSize, $scaleSize);
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  .main-panel .zoomIn {
-    animation-name: zoomIn95;
-  }
-
-  @keyframes zoomOut95 {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-      transform: scale3d($scaleSize, $scaleSize, $scaleSize);
-    }
-  }
-
-  .main-panel .zoomOut {
-    animation-name: zoomOut95;
+<style leng="scss" scoped>
+  #wrapper {
+    display: flex;
   }
 </style>
