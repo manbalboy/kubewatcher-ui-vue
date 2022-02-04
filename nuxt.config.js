@@ -30,7 +30,7 @@ export default {
       { src: '/js/highcharts/exporting.js' },
       { src: '/js/highcharts/export-data.js' },
       { src: '/js/highcharts/accessibility.js' },
-      { src: '/js/highcharts/accessibility.js' },
+      { src: '/js/menu.js' },
     ],
 
     bodyAttrs: {
@@ -52,7 +52,7 @@ export default {
     // 'assets/css/bootstrap.min.css',
     // 'assets/css/style.css',
     // 'assets/css/custom.css',
-    // 'assets/sass/black-dashboard-pro.scss',
+    'assets/sass/kubewatcher-ui.scss',
   ],
   /*
    ** Plugins to load before mounting the App

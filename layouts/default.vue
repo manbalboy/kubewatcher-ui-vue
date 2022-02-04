@@ -17,107 +17,33 @@
               </div>
             </div>
           </li>
-          <li class="on open">
-            <a href="#none" role="button">
-              <i class="feather icon-bar-chart-2"></i>&nbsp;<span class="lef-sidebar-brand-sub-text">Dashboard</span>
-            </a>
-            <ul>
-              <li class="noDepth"><a href="/main">Overview</a></li>
-              <li class="noDepth"><a href="/monitoring/application/overview">Application (K8s)</a></li>
-              <li class="dropright">
-                <a id="dropdownNode" href="#none" role="button" data-toggle="side-dropdown">K8s Boards</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownNode">
-                  <li class="noDepth"><a href="/monitoring/cluster/overview">K8s Overview</a></li>
-                  <li class="noDepth"><a href="/monitoring/vm/overview">Cluster Node Overview</a></li>
-                  <li class="noDepth"><a href="/monitoring/vm/monitoring">Cluster Node Detail</a></li>
-                  <li class="noDepth"><a href="/monitoring/jvm/overview">Pod JVM Overview</a></li>
-                  <li class="noDepth"><a href="/monitoring/jvm/application">Pod JVM Detail</a></li>
+          <li v-for="menu in menuList" :key="menu.name">
+            <NuxtLink :to="menu.path || '#none'" role="button">
+              <i :class="menu.icon"></i>&nbsp;<span class="lef-sidebar-brand-sub-text">{{ menu.name }}</span>
+            </NuxtLink>
+
+            <ul v-if="menu.children && menu.children.length > 0">
+              <li
+                v-for="child in menu.children"
+                :key="child.name"
+                :class="[child.children && child.children.length > 0 ? 'dropright' : 'noDepth']"
+              >
+                <NuxtLink :id="child.name" :to="child.path || '#none'" role="button" data-toggle="side-dropdown">
+                  {{ child.name }}
+                </NuxtLink>
+                <ul
+                  v-if="child.children && child.children.length > 0"
+                  class="dropdown-menu"
+                  :aria-labelledby="child.name"
+                >
+                  <li v-for="child_2 in child.children" :key="child_2.name" class="noDepth">
+                    <NuxtLink :to="child_2.path || '#none'" role="button" data-toggle="side-dropdown">
+                      {{ child_2.name }}
+                    </NuxtLink>
+                  </li>
                 </ul>
               </li>
-              <li class="noDepth"><a href="/monitoring/database">Database</a></li>
             </ul>
-          </li>
-          <li>
-            <a href="#none" role="button">
-              <i class="feather icon-box"></i>&nbsp;<span class="lef-sidebar-brand-sub-text">K8s Cluster</span>
-            </a>
-            <ul>
-              <li class="noDepth"><a href="/monitoring/cluster/nodes">Nodes</a></li>
-              <li class="dropright">
-                <a id="dropdownWorkload" href="#none" role="button" data-toggle="side-dropdown">Workloads</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownWorkload">
-                  <li class="noDepth"><a href="/monitoring/cluster/workloads/overview">Overview</a></li>
-                  <li class="noDepth"><a href="/monitoring/cluster/workloads/pods">Pods</a></li>
-                  <li class="noDepth"><a href="/monitoring/cluster/workloads/deployments">Deployments</a></li>
-                  <li class="noDepth"><a href="/monitoring/cluster/workloads/statefulsets">StatefulSets</a></li>
-                  <li class="noDepth"><a href="/monitoring/cluster/workloads/daemonsets">DaemonSets</a></li>
-                  <li class="noDepth"><a href="/monitoring/cluster/workloads/jobs">Jobs</a></li>
-                  <li class="noDepth"><a href="/monitoring/cluster/workloads/cronjobs">CronJobs</a></li>
-                </ul>
-              </li>
-              <li class="noDepth"><a href="/monitoring/cluster/storages">Storages</a></li>
-              <li class="dropright">
-                <a id="dropdownConfig" href="#none" role="button" data-toggle="side-dropdown">Configuration</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownConfig">
-                  <li class="noDepth"><a href="/cluster/config/configmaps">Configmaps</a></li>
-                  <li class="noDepth"><a href="/cluster/config/resource-quotas">Resource Quotas</a></li>
-                  <li class="noDepth"><a href="/cluster/config/hpa">HPA</a></li>
-                  <li class="noDepth"><a href="/cluster/config/namespaces">Namespaces</a></li>
-                  <li class="noDepth"><a href="/cluster/config/custom-resources">Custom Resources</a></li>
-                </ul>
-              </li>
-              <li class="dropright">
-                <a id="dropdownNetwork" href="#none" role="button" data-toggle="side-dropdown">Network</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownNetwork">
-                  <li class="noDepth"><a href="/cluster/network/services">Services</a></li>
-                  <li class="noDepth"><a href="/cluster/network/ingress">Ingresses</a></li>
-                  <li class="noDepth"><a href="/cluster/network/endpoints">Endpoints</a></li>
-                  <li class="noDepth"><a href="/cluster/network/policies">Network Policies</a></li>
-                </ul>
-              </li>
-              <li class="dropright">
-                <a id="dropdownAccess" href="#none" role="button" data-toggle="side-dropdown">Access Control</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownAccess">
-                  <li class="noDepth"><a href="/cluster/acl/service-accounts">Service Accounts</a></li>
-                  <li class="noDepth"><a href="/cluster/acl/role-bindings">Role Bindings</a></li>
-                  <li class="noDepth"><a href="/cluster/acl/roles">Roles</a></li>
-                  <li class="noDepth"><a href="/cluster/config/secrets">Secrets</a></li>
-                  <li class="noDepth"><a href="/cluster/acl/pod-security-policies">Pod Security Policies</a></li>
-                </ul>
-              </li>
-              <li class="noDepth"><a href="/monitoring/cluster/events">Events</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#none" role="button">
-              <i class="feather icon-bell"></i>&nbsp;<span class="lef-sidebar-brand-sub-text">Alarm</span>
-            </a>
-            <ul>
-              <li class="noDepth"><a href="/monitoring/alarm/list">List</a></li>
-              <li class="noDepth"><a href="/setting/alarm/list">Config</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#none" role="button">
-              <i class="feather icon-user"></i>&nbsp;<span class="lef-sidebar-brand-sub-text">Users</span>
-            </a>
-            <ul>
-              <li class="noDepth"><a href="/security/groups">Groups</a></li>
-              <li class="noDepth"><a href="/security/users">Users</a></li>
-              <li class="noDepth"><a href="/security/roles/user-role-management">Roles</a></li>
-            </ul>
-          </li>
-          <li class="noDepth">
-            <a href="/application/usage/usage-overview"
-              ><i class="feather icon-pie-chart"></i>&nbsp;<span class="lef-sidebar-brand-sub-text"
-                >Cluster Usage</span
-              ></a
-            >
-          </li>
-          <li class="noDepth">
-            <a href="/setting/preference"
-              ><i class="feather icon-settings"></i>&nbsp;<span class="lef-sidebar-brand-sub-text">Preference</span></a
-            >
           </li>
         </ul>
       </div>
@@ -129,10 +55,102 @@
     <Nuxt></Nuxt>
   </div>
 </template>
-<script></script>
+<script>
+  export default {
+    data() {
+      return {
+        menuList: [
+          {
+            icon: 'feather icon-bar-chart-2',
+            name: 'Dashboard',
+            path: '',
+            children: [
+              { icon: '', name: 'Overview', path: '/main' },
+              { icon: '', name: 'Application (K8s)', path: '/monitoring/application/overview' },
+              {
+                icon: '',
+                name: 'K8s Boards',
+                path: '',
+                children: [
+                  { icon: '', name: 'K8s Overview', path: '/monitoring/cluster/overview' },
+                  { icon: '', name: 'Cluster Node Overview', path: '/monitoring/vm/overview' },
+                  { icon: '', name: 'Cluster Node Detail', path: '/monitoring/vm/monitoring' },
+                  { icon: '', name: 'Pod JVM Overview', path: '/monitoring/jvm/overview' },
+                  { icon: '', name: 'Pod JVM Detail', path: '/monitoring/jvm/application' },
+                ],
+              },
+              { icon: '', name: 'Database', path: '/monitoring/database' },
+            ],
+          },
 
-<style leng="scss" scoped>
-  #wrapper {
-    display: flex;
-  }
-</style>
+          {
+            icon: 'feather icon-box',
+            name: 'K8s Cluster',
+            path: '',
+            children: [
+              { icon: '', name: 'Nodes', path: '/monitoring/cluster/nodes' },
+              {
+                icon: '',
+                name: 'Workloads',
+                path: '',
+                children: [
+                  { icon: '', name: 'Overview', path: '/monitoring/cluster/workloads/overview' },
+                  { icon: '', name: 'Deployments', path: '/monitoring/cluster/workloads/deployments' },
+                  { icon: '', name: 'StatefulSets', path: '/monitoring/cluster/workloads/statefulsets' },
+                  { icon: '', name: 'DaemonSets', path: '/monitoring/cluster/workloads/daemonsets' },
+                  { icon: '', name: 'Jobs', path: '/monitoring/cluster/workloads/jobs' },
+                  { icon: '', name: 'CronJobs', path: '/monitoring/cluster/workloads/cronjobs' },
+                ],
+              },
+              { icon: '', name: 'Storages', path: '/monitoring/cluster/storages' },
+              {
+                icon: '',
+                name: 'Configuration',
+                path: '',
+                children: [
+                  { icon: '', name: 'Configmaps', path: '/cluster/config/configmaps' },
+                  { icon: '', name: 'Resource Quotas', path: '/cluster/config/resource-quotas' },
+                  { icon: '', name: 'HPA', path: '/cluster/config/hpa' },
+                  { icon: '', name: 'Namespaces', path: '/cluster/config/namespaces' },
+                  { icon: '', name: 'Custom Resources', path: '/cluster/config/custom-resources' },
+                ],
+              },
+            ],
+          },
+
+          {
+            icon: 'feather icon-bell',
+            name: 'Alarm',
+            path: '',
+            children: [
+              { icon: '', name: 'List', path: '/monitoring/alarm/list' },
+              { icon: '', name: 'Config', path: '/setting/alarm/list' },
+            ],
+          },
+          {
+            icon: 'feather icon-user',
+            name: 'Users',
+            path: '',
+            children: [
+              { icon: '', name: 'Groups', path: '/security/groups' },
+              { icon: '', name: 'Users', path: '/security/users' },
+              { icon: '', name: 'Roles', path: '/security/roles/user-role-management' },
+            ],
+          },
+
+          {
+            icon: 'feather icon-pie-chart',
+            name: 'Cluster Usage',
+            path: '/application/usage/usage-overview',
+          },
+
+          {
+            icon: 'feather icon-settings',
+            name: 'Preference',
+            path: '/setting/preference',
+          },
+        ],
+      };
+    },
+  };
+</script>
